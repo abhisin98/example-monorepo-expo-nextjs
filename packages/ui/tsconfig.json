@@ -1,5 +1,7 @@
 {
-  "extends": "tsconfig/react-library.json",
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "include": ["src", "babel.config.js"],
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
 }
