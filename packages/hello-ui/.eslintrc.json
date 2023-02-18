@@ -1,0 +1,4 @@
+{
+  "extends": "@avivox/eslint-config",
+  "ignorePatterns": ["node_modules", "build"]
+}

@@ -1,24 +1,21 @@
+const { withExpo } = require("@expo/next-adapter");
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withExpo({
   reactStrictMode: true,
   swcMinify: true,
-  webpack: (config) => {
-    // Set the alias from `react-native` to `react-native-web`
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      "react-native$": "react-native-web",
-    };
-
-    // Add custom `.web.{jsx?,tsx?}` extension resolver
-    config.resolve.extensions = [
-      ".web.js",
-      ".web.jsx",
-      ".web.ts",
-      ".web.tsx",
-      ...config.resolve.extensions,
-    ];
-    return config;
+  transpilePackages: [
+    "react-native",
+    "@avivox/hello-ui",
+    "@ui-kitten/components",
+    "@eva-design/eva",
+    "react-native-svg",
+    // "expo",
+    // Add more React Native / Expo packages here...
+  ],
+  experimental: {
+    forceSwcTransforms: true,
   },
-};
+});
 
 module.exports = nextConfig;

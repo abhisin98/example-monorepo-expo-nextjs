@@ -1,47 +1,61 @@
 {
-  "name": "monorepo-expo-nextjs",
-  "version": "0.1.0",
+  "name": "avivox",
+  "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "start": "turbo start",
-    "lint": "turbo lint",
-    "test": "turbo test",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md}\"",
-    "dev:mobile": "turbo dev --filter=\"{./apps/mobile}...\"",
-    "dev:web": "turbo dev --filter=\"{./apps/web}...\"",
-    "build:mobile": "turbo build --filter=\"...{./apps/mobile}\"",
-    "build:web": "turbo build --filter=\"...{./apps/web}\""
+  "engines": {
+    "node": ">=14.0.0"
   },
-  "dependencies": {},
+  "packageManager": "yarn@1.22.19",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:mobile": "turbo run dev --filter=\"{./apps/mobile}...\"",
+    "dev:web": "turbo run dev --filter=\"{./apps/web}...\"",
+    "build": "turbo run build",
+    "build:mobile": "turbo run build --filter=\"{./apps/mobile}...\"",
+    "build:web": "turbo run build --filter=\"{./apps/web}...\"",
+    "start": "turbo run start",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\""
+  },
   "devDependencies": {
     "prettier": "latest",
-    "turbo": "latest",
-    "typescript": "latest"
+    "turbo": "latest"
   },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@babel/*",
-        "expo-modules-*",
-        "typescript"
-      ]
+  "dependencies": {},
+  "resolutions": {
+    "metro": "0.73.7",
+    "metro-babel-transformer": "0.73.7",
+    "metro-cache": "0.73.7",
+    "metro-file-map": "0.73.7",
+    "metro-hermes-compiler": "0.73.7",
+    "metro-inspector-proxy": "0.73.7",
+    "metro-react-native-babel-transformer": "0.73.7",
+    "metro-resolver": "0.73.7",
+    "metro-runtime": "0.73.7",
+    "metro-source-map": "0.73.7",
+    "metro-symbolicate": "0.73.7",
+    "metro-transform-plugins": "0.73.7",
+    "metro-transform-worker": "0.73.7",
+    "metro-cache-key": "0.73.7",
+    "metro-config": "0.73.7",
+    "metro-core": "0.73.7",
+    "metro-minify-terser": "0.73.7",
+    "metro-minify-uglify": "0.73.7",
+    "metro-react-native-babel-preset": "0.73.7"
+  },
+  "packageExtensions": {
+    "eslint-config-next@*": {
+      "dependencies": {
+        "next": "*"
+      }
     },
-    "patchedDependencies": {
-      "eslint-config-universe@11.1.1": "./packages/eslint-config-custom/patches/eslint-config-universe@11.1.1.patch",
-      "react-native@0.70.5": "./packages/eslint-config-custom/patches/react-native@0.70.5.patch"
-    },
-    "packageExtensions": {
-      "eslint-config-next@*": {
-        "dependencies": {
-          "next": "*"
-        }
-      },
-      "@next/font@*": {
-        "dependencies": {
-          "next": "*"
-        }
+    "@next/font@*": {
+      "dependencies": {
+        "next": "*"
       }
     }
   }

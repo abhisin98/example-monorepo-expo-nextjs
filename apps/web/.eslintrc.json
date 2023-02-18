@@ -1,5 +1,4 @@
 {
-  // "extends": "next/core-web-vitals",
-  "extends": ["eslint-config-custom", "next"],
-  "ignorePatterns": ["node_modules", ".next", "public"]
+  "extends": ["@avivox/eslint-config", "eslint-config-next"],
+  "ignorePatterns": ["node_modules", ".next", "build"]
 }

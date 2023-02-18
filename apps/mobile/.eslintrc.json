@@ -1,5 +1,5 @@
 {
-  "extends": "eslint-config-custom",
+  "extends": "@avivox/eslint-config",
   "ignorePatterns": ["node_modules", "build", ".expo", ".expo-shared"],
   "overrides": [
     {

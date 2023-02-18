@@ -8,10 +8,6 @@ node_modules
 # testing
 coverage
 
-# expo
-.expo
-build
-
 # next.js
 .next/
 out/

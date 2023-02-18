@@ -1,0 +1,8 @@
+{
+  "extends": "@avivox/tsconfig/react-native",
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "./build"
+  },
+  "exclude": ["dist", "build", "node_modules"]
+}

@@ -1,7 +1,6 @@
 import { Inter } from "@next/font/google";
 import Head from "next/head";
 import Image from "next/image";
-import { Button } from "ui";
 
 import styles from "@/styles/Home.module.css";
 
@@ -17,12 +16,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Button
-          style={{ color: "blue" }}
-          onPress={() => alert("Hello I'm React Native Button")}
-        >
-          React Native Button
-        </Button>
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
@@ -57,13 +50,7 @@ export default function Home() {
             priority
           />
           <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+            <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
           </div>
         </div>
 
@@ -120,8 +107,7 @@ export default function Home() {
               Deploy <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
+              Instantly deploy your Next.js site to a shareable URL with&nbsp;Vercel.
             </p>
           </a>
         </div>
