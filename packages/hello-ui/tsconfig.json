@@ -1,5 +1,5 @@
 {
-  "extends": "@avivox/tsconfig/react-native",
+  "extends": "@monorepo/tsconfig/react-native",
   "compilerOptions": {
     "strict": true,
     "outDir": "./build",

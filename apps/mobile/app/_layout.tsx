@@ -1,4 +1,4 @@
-import { UIProvider } from "@avivox/hello-ui";
+import { UIProvider } from "@monorepo/hello-ui";
 import { Slot } from "expo-router";
 
 import { AuthProvider } from "../util/auth/provider";

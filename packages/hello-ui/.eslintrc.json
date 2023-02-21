@@ -1,4 +1,4 @@
 {
-  "extends": "@avivox/eslint-config",
+  "extends": "@monorepo/eslint-config",
   "ignorePatterns": ["node_modules", "build"]
 }

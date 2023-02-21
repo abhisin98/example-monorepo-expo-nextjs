@@ -6,7 +6,7 @@ const nextConfig = withExpo({
   swcMinify: true,
   transpilePackages: [
     "react-native",
-    "@avivox/hello-ui",
+    "@monorepo/hello-ui",
     "@ui-kitten/components",
     "@eva-design/eva",
     "react-native-svg",

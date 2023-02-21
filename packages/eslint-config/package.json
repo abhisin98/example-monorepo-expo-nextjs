@@ -1,5 +1,5 @@
 {
-  "name": "@avivox/eslint-config",
+  "name": "@monorepo/eslint-config",
   "version": "0.1.0",
   "license": "MIT",
   "main": "index.js",

@@ -1,9 +1,8 @@
 {
   "private": true,
-  "name": "@avivox/hello-ui",
+  "name": "@monorepo/hello-ui",
   "description": "Hello UI components for React Native",
   "version": "0.1.0",
-  "author": "avivox",
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -24,8 +23,8 @@
     "react-native-svg": "^13.8.0"
   },
   "devDependencies": {
-    "@avivox/eslint-config": "*",
-    "@avivox/tsconfig": "*",
+    "@monorepo/eslint-config": "*",
+    "@monorepo/tsconfig": "*",
     "@types/jest": "^29.4.0",
     "@types/react": "18.0.28",
     "@types/react-native": "^0.71.3",

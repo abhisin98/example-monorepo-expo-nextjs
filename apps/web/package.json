@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@avivox/hello-ui": "*",
+    "@monorepo/hello-ui": "*",
     "@next/font": "13.1.6",
     "next": "13.1.6",
     "react": "18.2.0",
@@ -18,8 +18,8 @@
     "react-native-web": "~0.18.9"
   },
   "devDependencies": {
-    "@avivox/eslint-config": "*",
-    "@avivox/tsconfig": "*",
+    "@monorepo/eslint-config": "*",
+    "@monorepo/tsconfig": "*",
     "@expo/next-adapter": "^5.0.2",
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",

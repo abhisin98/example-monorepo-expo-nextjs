@@ -1,4 +1,4 @@
-import { Text, Button, Layout } from "@avivox/hello-ui";
+import { Text, Button, Layout } from "@monorepo/hello-ui";
 import { Stack } from "expo-router";
 import { View } from "react-native";
 

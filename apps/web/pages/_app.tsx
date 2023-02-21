@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { UIProvider, Welcome } from "@avivox/hello-ui";
+import { UIProvider, Welcome } from "@monorepo/hello-ui";
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {

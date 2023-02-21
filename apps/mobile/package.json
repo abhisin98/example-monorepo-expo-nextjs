@@ -10,7 +10,7 @@
     "lint": "eslint --ext js,jsx,ts,tsx"
   },
   "dependencies": {
-    "@avivox/hello-ui": "*",
+    "@monorepo/hello-ui": "*",
     "expo": "~47.0.12",
     "expo-constants": "^14.0.2",
     "expo-linking": "^3.3.0",
@@ -24,8 +24,8 @@
     "react-native-web": "~0.18.9"
   },
   "devDependencies": {
-    "@avivox/eslint-config": "*",
-    "@avivox/tsconfig": "*",
+    "@monorepo/eslint-config": "*",
+    "@monorepo/tsconfig": "*",
     "@babel/core": "^7.12.9",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.70.6",
