@@ -1,7 +1,6 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  // clean: true,
   dts: true,
   entry: ["src/index.ts"],
   outDir: "build",
@@ -10,4 +9,3 @@ export default defineConfig({
   target: "esnext",
   external: ["react", "react-native", "react-native-web"],
 });
-
