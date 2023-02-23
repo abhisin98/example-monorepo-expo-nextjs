@@ -11,15 +11,15 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo run dev",
-    "dev:mobile": "turbo run dev --filter=\"{./apps/mobile}...\"",
-    "dev:web": "turbo run dev --filter=\"{./apps/web}...\"",
-    "build": "turbo run build",
-    "build:mobile": "turbo run build --filter=\"{./apps/mobile}...\"",
-    "build:web": "turbo run build --filter=\"{./apps/web}...\"",
-    "start": "turbo run start",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
+    "dev": "turbo dev",
+    "dev:mobile": "turbo dev --filter=\"{./apps/mobile}...\"",
+    "dev:web": "turbo dev --filter=\"{./apps/web}...\"",
+    "build": "turbo build",
+    "build:mobile": "turbo build --filter=\"{./apps/mobile}...\"",
+    "build:web": "turbo build --filter=\"{./apps/web}...\"",
+    "start": "turbo start",
+    "lint": "turbo lint",
+    "test": "turbo test",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\""
   },
   "devDependencies": {

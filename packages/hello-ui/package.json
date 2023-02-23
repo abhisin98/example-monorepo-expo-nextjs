@@ -4,13 +4,20 @@
   "description": "Hello UI components for React Native",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "./build/index.js",
+  "source": "./src/index.ts",
+  "main": "./build/index",
+  "module": "./build/index.mjs",
   "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/index.mjs",
+      "require": "./build/index.js",
+      "types": "./build/index.d.ts",
+      "source": "./src/index.ts"
+    }
+  },
+  "sideEffects": false,
   "react-native": "./src/index.ts",
-  "files": [
-    "build",
-    "src"
-  ],
   "scripts": {
     "dev": "tsup --watch --silent",
     "build": "tsup --clean",

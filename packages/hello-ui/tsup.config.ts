@@ -1,11 +1,13 @@
-import type { Options } from "tsup";
+import { defineConfig } from "tsup";
 
-const config: Options = {
+export default defineConfig({
+  // clean: true,
+  dts: true,
   entry: ["src/index.ts"],
   outDir: "build",
   sourcemap: true,
-  dts: true,
+  format: ["esm", "cjs"],
+  target: "esnext",
   external: ["react", "react-native", "react-native-web"],
-};
+});
 
-export default config;

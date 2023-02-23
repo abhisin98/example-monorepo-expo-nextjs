@@ -9,10 +9,10 @@ on:
 jobs:
   build:
     name: Build and Test
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+    runs-on: ubuntu-latest
+    # strategy:
+    #   matrix:
+    #     os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
       - name: Check out code
@@ -20,21 +20,44 @@ jobs:
         with:
           fetch-depth: 2
 
-      - uses: pnpm/action-setup@v2.0.1
+      - name: 🏗 Setup Pnpm
+        uses: pnpm/action-setup@v2.0.1
         with:
           version: 7.x
 
-      - name: Setup Node.js environment
+      - name: 🏗 Setup Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: "pnpm"
 
-      - name: Install dependencies
+      # - name: 🏗 Setup Expo
+      #   uses: expo/expo-github-action@v7
+      #   with:
+      #     expo-version: latest
+      #     eas-version: latest
+      #     token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: ♻️ Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 📦 Install dependencies (with cache)
         run: pnpm install
 
-      - name: Build
-        run: pnpm build
+      - name: Linting code
+        run: pnpm lint
 
       - name: Test
         run: pnpm test
+
+      - name: ⚡️ Build apps and packages
+        run: pnpm build
+
+      # - name: 🚀 Build mobile
+      #   working-directory: apps/mobile
+      #   run: eas build --non-interactive --wait --profile development --platform android
