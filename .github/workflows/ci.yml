@@ -31,12 +31,17 @@ jobs:
           node-version: 18.x
           cache: "pnpm"
 
-      # - name: 🏗 Setup Expo
-      #   uses: expo/expo-github-action@v7
-      #   with:
-      #     expo-version: latest
-      #     eas-version: latest
-      #     token: ${{ secrets.EXPO_TOKEN }}
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: ♻️ Setup pnpm cache
         uses: actions/cache@v3
