@@ -1,5 +1,4 @@
 module.exports = {
-  root: true,
   extends: ["eslint-config-universe/native"],
   // do some additional things with it
   rules: {

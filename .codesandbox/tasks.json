@@ -27,6 +27,11 @@
       "command": "pnpm run test",
       "runAtStart": false
     },
+    "clean": {
+      "name": "clean",
+      "command": "pnpm run clean",
+      "runAtStart": false
+    },
     "format": {
       "name": "format",
       "command": "pnpm run format",

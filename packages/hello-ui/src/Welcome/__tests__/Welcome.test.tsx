@@ -1,13 +1,14 @@
 import { cleanup, render, screen } from "@testing-library/react-native";
+import React from "react";
 
-import { UIProvider } from "../UIProvider";
-import { Welcome } from "../Welcome";
+import UIProvider from "../../UIProvider";
+import Welcome from "../index";
 
 afterEach(cleanup);
 
-it("renders textual children", () => {
+it("renders Welcome component", () => {
   render(
-    <UIProvider theme="dark">
+    <UIProvider theme='dark'>
       <Welcome />
     </UIProvider>
   );

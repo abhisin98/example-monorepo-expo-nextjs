@@ -2,31 +2,29 @@
   "name": "monorepo",
   "version": "0.0.0",
   "private": true,
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "packageManager": "pnpm@7.27.0",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo dev",
-    "dev:mobile": "turbo dev --filter=\"{./apps/mobile}...\"",
-    "dev:web": "turbo dev --filter=\"{./apps/web}...\"",
-    "build": "turbo build",
-    "build:mobile": "turbo build --filter=\"{./apps/mobile}...\"",
-    "build:web": "turbo build --filter=\"{./apps/web}...\"",
-    "start": "turbo start",
+    "dev": "dotenv -- turbo dev --parallel",
+    "build": "dotenv -- turbo build",
+    "start": "dotenv -- turbo start",
     "lint": "turbo lint",
-    "test": "turbo test",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\""
+    "test": "dotenv -- turbo test",
+    "clean": "turbo clean && npkill",
+    "type-check": "turbo type-check",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,md,json}\" --config .prettierrc.json  --ignore-path .gitignore"
   },
   "devDependencies": {
+    "@types/node": "18.13.0",
+    "dotenv-cli": "latest",
+    "npkill": "^0.11.2",
     "prettier": "latest",
-    "turbo": "latest"
+    "ts-node": "^10.9.1",
+    "turbo": "latest",
+    "typescript": "latest"
   },
-  "dependencies": {},
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
@@ -34,39 +32,6 @@
         "expo-modules-*",
         "typescript"
       ]
-    },
-    "packageExtensions": {
-      "eslint-config-next@*": {
-        "dependencies": {
-          "next": "*"
-        }
-      },
-      "@next/font@*": {
-        "dependencies": {
-          "next": "*"
-        }
-      }
-    },
-    "overrides": {
-      "metro": "0.73.7",
-      "metro-babel-transformer": "0.73.7",
-      "metro-cache": "0.73.7",
-      "metro-file-map": "0.73.7",
-      "metro-hermes-compiler": "0.73.7",
-      "metro-inspector-proxy": "0.73.7",
-      "metro-react-native-babel-transformer": "0.73.7",
-      "metro-resolver": "0.73.7",
-      "metro-runtime": "0.73.7",
-      "metro-source-map": "0.73.7",
-      "metro-symbolicate": "0.73.7",
-      "metro-transform-plugins": "0.73.7",
-      "metro-transform-worker": "0.73.7",
-      "metro-cache-key": "0.73.7",
-      "metro-config": "0.73.7",
-      "metro-core": "0.73.7",
-      "metro-minify-terser": "0.73.7",
-      "metro-minify-uglify": "0.73.7",
-      "metro-react-native-babel-preset": "0.73.7"
     }
   }
 }

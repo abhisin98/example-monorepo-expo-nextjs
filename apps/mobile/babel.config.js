@@ -1,10 +1,12 @@
+/** @type {import("@babel/core").ConfigFunction} */
 module.exports = function (api) {
-  api.cache(true);
+  api.cache.forever();
+
+  // Make Expo Router run from `src/app` instead of `app`.
+  // Path is relative to `/node_modules/expo-router`
+  // process.env.EXPO_ROUTER_APP_ROOT = "../../apps/mobile/app";
   return {
     presets: ["babel-preset-expo"],
-    plugins: [
-      // NOTE: `expo-router/babel` is a temporary extension to `babel-preset-expo`.
-      require.resolve("expo-router/babel"),
-    ],
+    plugins: [require.resolve("expo-router/babel")],
   };
 };

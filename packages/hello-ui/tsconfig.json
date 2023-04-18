@@ -1,9 +1,15 @@
 {
-  "extends": "@monorepo/tsconfig/react-native",
+  "extends": "@monorepo/tsconfig/native.json",
   "compilerOptions": {
     "strict": true,
+    "rootDir": "./src",
+    "declaration": true,
     "outDir": "./build",
-    "incremental": false
+    "skipLibCheck": true,
+    "noEmit": false,
+    "declarationMap": false,
+    "tsBuildInfoFile": "./build/.tsbuildinfo"
   },
-  "exclude": ["dist", "build", "node_modules"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "build", "**/__tests__", "jest.config.ts", "tsup.config.ts"]
 }

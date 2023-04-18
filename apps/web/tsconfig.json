@@ -1,5 +1,5 @@
 {
-  "extends": "@monorepo/tsconfig/nextjs",
+  "extends": "@monorepo/tsconfig/nextjs.json",
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalDependencies": ["**/.env"],
   "pipeline": {
     "dev": {
       "cache": false,
@@ -8,17 +8,46 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["build/**", ".next/**", "!.next/cache/**", ".expo/**", "node_modules/.cache/metro/**"],
+      "outputMode": "new-only"
     },
     "start": {
-      "dependsOn": ["^build"],
-      "outputs": []
+      "dependsOn": ["build"],
+      "cache": false
     },
-    "lint": {
-      "outputs": []
+    "lint": {},
+    "test": {
+      "dependsOn": ["lint"]
     },
-     "test": {
-      "outputs": ["tests/**"]
+    "clean": {
+      "cache": false
+    },
+    "type-check": {
+      "cache": false
     }
-  }
+  },
+  "globalEnv": [
+    "CI",
+    "EXPO_ROUTER_APP_ROOT",
+    "NODE_ENV",
+    "SKIP_ENV_VALIDATION",
+
+    "NEXTAUTH_URL",
+    "SECRET",
+    "FACEBOOK_ID",
+    "FACEBOOK_SECRET",
+    "GITHUB_ID",
+    "GITHUB_SECRET",
+    "GOOGLE_ID",
+    "GOOGLE_SECRET",
+    "EMAIL_SERVER_USER",
+    "EMAIL_SERVER_PASSWORD",
+    "EMAIL_SERVER_HOST",
+    "EMAIL_SERVER_PORT",
+    "EMAIL_FROM",
+    "DB_USER",
+    "DB_PASSWORD",
+    "DB_NAME",
+    "DATABASE_URL"
+  ]
 }

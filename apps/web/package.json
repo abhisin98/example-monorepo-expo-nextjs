@@ -6,26 +6,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "echo \"web: no test specified\"",
+    "clean": "rm -rf .next .turbo",
+    "type-check": "turbo type-check"
   },
   "dependencies": {
-    "@monorepo/hello-ui": "*",
-    "@next/font": "13.1.6",
+    "@monorepo/hello-ui": "workspace:*",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.70.5",
-    "react-native-web": "~0.18.9"
+    "react-native": "0.71.6",
+    "react-native-svg": "13.4.0",
+    "react-native-web": "~0.18.12"
   },
   "devDependencies": {
-    "@monorepo/eslint-config": "*",
-    "@monorepo/tsconfig": "*",
+    "@monorepo/eslint-config": "workspace:*",
+    "@monorepo/tsconfig": "workspace:*",
     "@expo/next-adapter": "^5.0.2",
     "@types/node": "18.13.0",
-    "@types/react": "18.0.28",
+    "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
-    "eslint": "8.34.0",
+    "@types/react-native": "~0.71.5",
+    "eslint": "8.38.0",
     "eslint-config-next": "13.1.6",
-    "typescript": "4.9.5"
+    "typescript": "^5.0.4"
   }
 }

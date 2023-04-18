@@ -1,5 +1,5 @@
 {
-  "extends": "@monorepo/eslint-config",
+  "extends": "@monorepo/eslint-config/native",
   "ignorePatterns": ["node_modules", "build", ".expo", ".expo-shared"],
   "overrides": [
     {

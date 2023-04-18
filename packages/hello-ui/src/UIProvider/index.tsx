@@ -1,17 +1,17 @@
 import * as eva from "@eva-design/eva";
 import { ApplicationProvider } from "@ui-kitten/components";
 import * as React from "react";
-// import { Welcome } from "./welcome";
 
 export interface UIProviderProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   theme: "dark" | "light";
 }
-
-export const UIProvider: React.FC<UIProviderProps> = ({ children, theme, ...rest }) => {
+const UIProvider: React.FC<UIProviderProps> = ({ children, theme }) => {
   return (
-    <ApplicationProvider {...eva} theme={eva[theme]} {...rest}>
+    <ApplicationProvider {...eva} theme={eva[theme]}>
       {children}
     </ApplicationProvider>
   );
 };
+
+export default UIProvider;

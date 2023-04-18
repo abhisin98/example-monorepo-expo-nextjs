@@ -2,19 +2,28 @@
   "name": "@monorepo/eslint-config",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "index.js",
+  "main": "default.js",
   "files": [
-    "index.js"
+    "default.js",
+    "native.js",
+    "react.js"
   ],
   "dependencies": {
-    "eslint": "8.34.0",
-    "eslint-config-universe": "^11.1.1",
-    "prettier": "^2.8.4"
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint-config-universe": "^11.2.0"
   },
   "devDependencies": {
-    "typescript": "^4.9.5"
+    "eslint": "8.38.0",
+    "prettier": "^2.8.7"
   },
-  "publishConfig": {
-    "access": "public"
+  "peerDependencies": {
+    "eslint": ">=8.38.",
+    "prettier": ">=2.8."
+  },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": true
+    }
   }
 }

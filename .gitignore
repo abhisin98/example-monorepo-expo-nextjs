@@ -8,10 +8,23 @@ node_modules
 # testing
 coverage
 
+# production
+build/
+dist/
+web-build/
+
 # next.js
 .next/
 out/
-build
+
+# expo
+.expo/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
 
 # misc
 .DS_Store
@@ -24,10 +37,19 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
+.env
+.env*.local
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
 # turbo
 .turbo
+

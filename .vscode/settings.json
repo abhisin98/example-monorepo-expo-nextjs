@@ -1,0 +1,18 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "prettier.configPath": "",
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "graphql"],
+  "eslint.options": {
+    "extensions": [".js", ".jsx", ".ts", ".tsx", ".graphql"]
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}
