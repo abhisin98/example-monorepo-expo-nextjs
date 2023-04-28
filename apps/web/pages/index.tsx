@@ -1,6 +1,5 @@
-import { Welcome, Layout } from "@monorepo/hello-ui";
+import { Welcome } from "@monorepo/hello-ui";
 import Head from "next/head";
-
 export default function Page() {
   return (
     <>

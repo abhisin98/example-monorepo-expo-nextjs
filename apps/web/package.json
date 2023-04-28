@@ -9,7 +9,7 @@
     "lint": "next lint",
     "test": "echo \"web: no test specified\"",
     "clean": "rm -rf .next .turbo",
-    "type-check": "turbo type-check"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@monorepo/hello-ui": "workspace:*",
@@ -21,9 +21,9 @@
     "react-native-web": "~0.18.12"
   },
   "devDependencies": {
+    "@expo/next-adapter": "^5.0.2",
     "@monorepo/eslint-config": "workspace:*",
     "@monorepo/tsconfig": "workspace:*",
-    "@expo/next-adapter": "^5.0.2",
     "@types/node": "18.13.0",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",

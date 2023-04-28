@@ -3,7 +3,7 @@ import { Slot } from "expo-router";
 
 export default function Root() {
   return (
-    <UIProvider theme='dark'>
+    <UIProvider theme='light'>
       <Slot />
     </UIProvider>
   );

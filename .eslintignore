@@ -1,0 +1,18 @@
+#files
+*.json
+*.md
+*.log
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.ico
+*.yaml
+
+# production
+build/
+dist/
+web-build/
+.next/
+out/
+.expo/

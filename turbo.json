@@ -7,13 +7,13 @@
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["lint", "^build"],
       "outputs": ["build/**", ".next/**", "!.next/cache/**", ".expo/**", "node_modules/.cache/metro/**"],
       "outputMode": "new-only"
     },
     "start": {
-      "dependsOn": ["build"],
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "lint": {},
     "test": {
@@ -22,9 +22,7 @@
     "clean": {
       "cache": false
     },
-    "type-check": {
-      "cache": false
-    }
+    "type-check": {}
   },
   "globalEnv": [
     "CI",

@@ -10,7 +10,7 @@
     "lint": "eslint --ext js,jsx,ts,tsx",
     "test": "echo \"mobile: no test specified\"",
     "clean": "rm -rf .expo .turbo build",
-    "type-check": "turbo type-check",
+    "type-check": "tsc --noEmit",
     "release": "eas build --profile development --platform android"
   },
   "dependencies": {
@@ -29,9 +29,9 @@
     "react-native-svg": "13.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.0",
     "@monorepo/eslint-config": "workspace:*",
     "@monorepo/tsconfig": "workspace:*",
-    "@babel/core": "^7.20.0",
     "@types/react": "~18.0.14",
     "@types/react-native": "^0.71.5",
     "eslint": "8.38.0",

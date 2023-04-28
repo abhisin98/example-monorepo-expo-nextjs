@@ -1,0 +1,23 @@
+#files
+.gitignore
+.eslintignore
+.env
+.npmrc
+.nvmrc
+.prettierignore
+.cache*
+*.log
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.ico
+*.yaml
+
+# production
+build/
+dist/
+web-build/
+.next/
+out/
+.expo/

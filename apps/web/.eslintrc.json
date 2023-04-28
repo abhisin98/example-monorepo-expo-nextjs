@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": ["eslint-config-next", "@monorepo/eslint-config/native"],
   "rules": { "@next/next/no-html-link-for-pages": "off", "@next/next/no-overload-matches": "off", "react/jsx-key": "off" },
   "ignorePatterns": ["node_modules", ".next", "build"]

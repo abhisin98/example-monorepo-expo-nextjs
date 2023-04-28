@@ -11,5 +11,5 @@
     "tsBuildInfoFile": "./build/.tsbuildinfo"
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "build", "**/__tests__", "jest.config.ts", "tsup.config.ts"]
+  "exclude": ["node_modules", "build", "**/__tests__", "jest.config.ts"]
 }

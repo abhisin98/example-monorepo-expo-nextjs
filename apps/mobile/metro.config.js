@@ -1,6 +1,6 @@
 // Learn more https://docs.expo.dev/guides/monorepos
 const { getDefaultConfig } = require("expo/metro-config");
-const { FileStore } = require("metro-cache");
+// const { FileStore } = require("metro-cache");
 const path = require("path");
 
 // Find the project and workspace directories
@@ -18,11 +18,11 @@ config.resolver.nodeModulesPaths = [path.resolve(projectRoot, "node_modules"), p
 // config.resolver.disableHierarchicalLookup = true;
 
 // 4. Use turborepo to restore the cache when possible
-config.cacheStores = [
-  // Ensure the cache isn't shared between projects
-  // this ensures the transform-time environment variables are changed to reflect
-  // the current project.
-  new FileStore({ root: path.join(projectRoot, "node_modules/.cache/metro") }),
-];
+// config.cacheStores = [
+//   // Ensure the cache isn't shared between projects
+//   // this ensures the transform-time environment variables are changed to reflect
+//   // the current project.
+//   new FileStore({ root: path.join(projectRoot, "node_modules/.cache/metro") }),
+// ];
 
 module.exports = config;

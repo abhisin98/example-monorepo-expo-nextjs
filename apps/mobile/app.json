@@ -15,15 +15,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "bundleIdentifier": "com.avivox.app",
+      "bundleIdentifier": "com.mobile.app",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.avivox.app",
+      "package": "com.mobile.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -36,9 +34,6 @@
     "extra": {
       "eas": {
         "projectId": "0e46a763-a0bb-49a6-b95a-af0ce5fb8541"
-      },
-      "router": {
-        "origin": "http://localhost:3000"
       }
     }
   }

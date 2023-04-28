@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": "@monorepo/eslint-config/native",
   "ignorePatterns": ["node_modules", "build"]
 }

@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "extends": ["@monorepo/eslint-config"],
+  "settings": {
+    "next": {
+      "rootDir": ["apps/web"]
+    }
+  },
+  "ignorePatterns": ["**/*.json", "node_modules", "build", ".turbo", ".next", ".expo"]
+}
