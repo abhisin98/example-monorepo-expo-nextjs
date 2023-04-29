@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 2
 
       - name: Setup
-        uses: ./.github/workflows/setup
+        uses: .github/workflows/setup
 
       # - name: 🏗 Setup Pnpm
       #   uses: pnpm/action-setup@v2.0.1
@@ -91,7 +91,7 @@ jobs:
           fetch-depth: 2
 
       - name: Setup
-        uses: ./.github/workflows/setup
+        uses: .github/workflows/setup
 
       - name: Lint
         run: pnpm lint
@@ -108,7 +108,7 @@ jobs:
           fetch-depth: 2
 
       - name: Setup
-        uses: ./.github/workflows/setup
+        uses: .github/workflows/setup
 
       - name: Test
         run: pnpm test
