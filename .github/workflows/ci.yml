@@ -79,9 +79,9 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Deploy to Netlify
-        working-directory: apps/web
         uses: netlify/actions/cli@master
         with:
+          working-directory: apps/web
           args: deploy --prod
           secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
         env:
