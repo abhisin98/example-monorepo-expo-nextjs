@@ -66,7 +66,7 @@ jobs:
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=apps/web/.next --prod
+          args: deploy --dir=apps/web/.next --functions=functions
           secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
