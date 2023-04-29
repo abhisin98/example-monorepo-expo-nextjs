@@ -64,19 +64,13 @@ jobs:
         run: pnpm build
 
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.1
+        uses: netlify/actions/cli@master
         with:
-          publish-dir: "./apps/web/.next"
-          production-branch: main
-          github-token: ${{ secrets.MY_GITHUB_SECRET }}
-          deploy-message: "Deploy from GitHub Actions"
-          enable-pull-request-comment: false
-          enable-commit-comment: true
-          overwrites-pull-request-comment: true
+          args: deploy --dir=apps/web/.next --prod
+          secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
 
       # - name: 🚀 Build mobile
       #   working-directory: apps/mobile
