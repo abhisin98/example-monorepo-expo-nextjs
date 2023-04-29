@@ -17,11 +17,11 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
 
       - name: Setup
         uses: ./.github/workflows/setup
+        with:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
 
       # - name: 🏗 Setup Pnpm
       #   uses: pnpm/action-setup@v2.0.1
@@ -85,13 +85,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Check out code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
 
       - name: Setup
         uses: ./.github/workflows/setup
+        with:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Lint
         run: pnpm lint
@@ -104,11 +104,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
 
       - name: Setup
         uses: ./.github/workflows/setup
+        with:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Test
         run: pnpm test
