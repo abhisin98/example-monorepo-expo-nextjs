@@ -1,0 +1,44 @@
+name: setup
+description: 'Setup (Dependencies, Nodejs)'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 🏗 Setup Pnpm
+      uses: pnpm/action-setup@v2.2.4
+      with:
+          version: 7.x
+
+    - name: 🏗 Setup Node.js environment
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'pnpm'
+
+    # - name: Install dependencies
+    #   shell: bash
+    #   run: pnpm install
+
+    - name: 🏗 Setup Expo
+      uses: expo/expo-github-action@v7
+      with:
+        expo-version: latest
+        eas-version: latest
+        token: ${{ secrets.EXPO_TOKEN }}
+
+    - name: Get pnpm store directory
+      id: pnpm-cache
+      run: |
+        echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+    - name: ♻️ Setup pnpm cache
+      uses: actions/cache@v3
+      with:
+        path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: 📦 Install dependencies (with cache)
+      # shell: bash
+      run: pnpm install

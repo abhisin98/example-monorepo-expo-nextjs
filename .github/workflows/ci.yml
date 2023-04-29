@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build 🏗️
     runs-on: ubuntu-latest
     # strategy:
     #   matrix:
@@ -20,58 +20,95 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: 🏗 Setup Pnpm
-        uses: pnpm/action-setup@v2.0.1
-        with:
-          version: 7.x
+      - name: Setup
+        uses: ./.github/workflows/setup
 
-      - name: 🏗 Setup Node.js environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-          cache: "pnpm"
+      # - name: 🏗 Setup Pnpm
+      #   uses: pnpm/action-setup@v2.0.1
+      #   with:
+      #     version: 7.x
 
-      - name: 🏗 Setup Expo
-        uses: expo/expo-github-action@v7
-        with:
-          expo-version: latest
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
+      # - name: 🏗 Setup Node.js environment
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18.x
+      #     cache: "pnpm"
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      # - name: 🏗 Setup Expo
+      #   uses: expo/expo-github-action@v7
+      #   with:
+      #     expo-version: latest
+      #     eas-version: latest
+      #     token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: ♻️ Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      # - name: Get pnpm store directory
+      #   id: pnpm-cache
+      #   run: |
+      #     echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - name: 📦 Install dependencies (with cache)
-        run: pnpm install --no-frozen-lockfile
+      # - name: ♻️ Setup pnpm cache
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pnpm-store-
 
-      - name: Linting code
-        run: pnpm lint
+      # - name: 📦 Install dependencies (with cache)
+      #   run: pnpm install --no-frozen-lockfile
 
-      - name: Test
-        run: pnpm test
+      # - name: Linting code
+      #   run: pnpm lint
+
+      # - name: Test
+      #   run: pnpm test
 
       - name: ⚡️ Build apps and packages
         run: pnpm build
 
-      - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy --dir=apps/web/.next --functions=functions
-          secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      # - name: Deploy to Netlify
+      #   uses: netlify/actions/cli@master
+      #   with:
+      #     args: deploy --dir=apps/web/.next --prod
+      #     secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       # - name: 🚀 Build mobile
       #   working-directory: apps/mobile
       #   run: eas build --non-interactive --wait --profile development --platform android
+
+  lint:
+    name: Lint ✅
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Setup
+        uses: ./.github/workflows/setup
+
+      - name: Lint
+        run: pnpm lint
+
+  test:
+    name: Test 🧪
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Setup
+        uses: ./.github/workflows/setup
+
+      - name: Test
+        run: pnpm test
