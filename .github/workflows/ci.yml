@@ -23,57 +23,8 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
-      # - name: 🏗 Setup Pnpm
-      #   uses: pnpm/action-setup@v2.0.1
-      #   with:
-      #     version: 7.x
-
-      # - name: 🏗 Setup Node.js environment
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 18.x
-      #     cache: "pnpm"
-
-      # - name: 🏗 Setup Expo
-      #   uses: expo/expo-github-action@v7
-      #   with:
-      #     expo-version: latest
-      #     eas-version: latest
-      #     token: ${{ secrets.EXPO_TOKEN }}
-
-      # - name: Get pnpm store directory
-      #   id: pnpm-cache
-      #   run: |
-      #     echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      # - name: ♻️ Setup pnpm cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pnpm-store-
-
-      # - name: 📦 Install dependencies (with cache)
-      #   run: pnpm install --no-frozen-lockfile
-
-      # - name: Linting code
-      #   run: pnpm lint
-
-      # - name: Test
-      #   run: pnpm test
-
       - name: ⚡️ Build apps and packages
         run: pnpm build
-
-      # - name: Deploy to Netlify
-      #   uses: netlify/actions/cli@master
-      #   with:
-      #     args: deploy --dir=apps/web/.next --prod
-      #     secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
-      #   env:
-      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
-      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       # - name: 🚀 Build mobile
       #   working-directory: apps/mobile
@@ -112,3 +63,27 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+  deploy:
+    name: Deploy Web 🚀
+    needs: [build, lint, test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup
+        uses: ./.github/workflows/setup
+        with:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Deploy to Netlify
+        working-directory: apps/web
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod
+          secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
