@@ -78,6 +78,14 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: deploy to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=apps/web.next
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
       # - name: Deploy to Netlify
       #   uses: nwtgck/actions-netlify@v2.0
       #   with:
@@ -89,20 +97,20 @@ jobs:
       #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
       #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v2.0.0
-        with:
-          publish-dir: "./apps/web/.next"
-          production-branch: main
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
-          enable-pull-request-comment: false
-          enable-commit-comment: true
-          overwrites-pull-request-comment: true
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+      # - name: Deploy to Netlify
+      #   uses: nwtgck/actions-netlify@v2.0.0
+      #   with:
+      #     publish-dir: "./apps/web/.next"
+      #     production-branch: main
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     deploy-message: "Deploy from GitHub Actions"
+      #     enable-pull-request-comment: false
+      #     enable-commit-comment: true
+      #     overwrites-pull-request-comment: true
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      #   timeout-minutes: 1
 
       # - name: Deploy to Netlify
       #   uses: netlify/actions/cli@master
