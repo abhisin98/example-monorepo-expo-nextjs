@@ -1,6 +1,6 @@
-[build]
-command = "cd ../.. && pnpm build"
-publish = ".next"
+# [build]
+# command = "cd ../.. && pnpm build"
+# publish = ".next"
 # publish = "apps/web/.next"
 
 [[plugins]]

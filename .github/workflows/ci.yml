@@ -79,11 +79,20 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
+        uses: nwtgck/actions-netlify@v2.0
         with:
-          working-directory: apps/web
-          args: deploy --build --prod
-          secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
+          publish-dir: "apps/web/.next"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
+
+      # - name: Deploy to Netlify
+      #   uses: netlify/actions/cli@master
+      #   with:
+      #     working-directory: apps/web
+      #     args: deploy --build --prod
+      #     secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
