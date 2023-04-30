@@ -78,25 +78,17 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Deploy
-        uses: nwtgck/actions-netlify@v2
+      - name: ⚡️ Build apps and packages
+        run: pnpm build
+
+      - name: deploy to Netlify
+        run: cd apps/web
+        uses: netlify/actions/cli@master
         with:
-          publish-dir: ./apps/web/.next
-          production-command: pnpm run build --if-present
+          args: deploy --build --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      # - name: ⚡️ Build apps and packages
-      #   run: pnpm build && cd apps/web
-
-      # - name: deploy to Netlify
-      #   uses: netlify/actions/cli@master
-      #   with:
-      #     args: deploy --build --prod
-      #   env:
-      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
-      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       # - name: Deploy to Netlify
       #   uses: nwtgck/actions-netlify@v2.0
