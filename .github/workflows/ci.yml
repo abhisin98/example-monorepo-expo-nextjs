@@ -78,19 +78,10 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Publish
-        uses: netlify/actions/build@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_BASE: .
-          NETLIFY_CMD: pnpm build
-          NETLIFY_DIR: apps/web/.next
-
       - name: deploy to Netlify
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=apps/web/.next
+          args: deploy --build --dir=apps/web/.next
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
