@@ -78,6 +78,9 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: ⚡️ Build apps and packages
+        run: pnpm build
+
       - name: deploy to Netlify
         uses: netlify/actions/cli@master
         with:
