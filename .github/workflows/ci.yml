@@ -78,14 +78,11 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Build
-        run: pnpm build
-
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         with:
           working-directory: apps/web
-          args: deploy --prod
+          args: deploy --build --prod
           secrets: '["NETLIFY_ACCESS_TOKEN", "NETLIFY_SITE_ID"]'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
