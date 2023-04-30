@@ -2,5 +2,5 @@
 package = "@netlify/plugin-nextjs"
 
 [build]
-command = "cd ../.. && pnpm build"
-publish = ".next"
+command = "pnpm build"
+publish = "apps/web/.next"

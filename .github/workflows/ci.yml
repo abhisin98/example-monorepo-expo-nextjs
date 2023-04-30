@@ -82,7 +82,6 @@ jobs:
         run: pnpm build
 
       - name: deploy to Netlify
-        run: cd apps/web
         uses: netlify/actions/cli@master
         with:
           args: deploy --build --prod
