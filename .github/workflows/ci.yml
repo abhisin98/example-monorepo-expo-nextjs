@@ -82,6 +82,8 @@ jobs:
         uses: nwtgck/actions-netlify@v2.0
         with:
           publish-dir: "./apps/web/.next"
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           production-deploy: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
