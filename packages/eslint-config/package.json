@@ -10,10 +10,17 @@
     "node.js"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.57.1",
-    "@typescript-eslint/parser": "^5.57.1",
-    "eslint-config-universe": "^11.2.0",
-    "eslint": "8.38.0",
-    "prettier": "^2.8.7"
+    "eslint": "8.56.0",
+    "eslint-config-universe": "^13.0.0",
+    "prettier": "^3.3.3"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.51",
+    "prettier": ">=3.0"
+  },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": true
+    }
   }
 }

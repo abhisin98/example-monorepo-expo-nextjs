@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env"],
-  "pipeline": {
+  "tasks": {
     "dev": {
       "cache": false,
       "persistent": true
@@ -9,7 +9,7 @@
     "build": {
       "dependsOn": ["lint", "^build"],
       "outputs": ["build/**", ".next/**", "!.next/cache/**", ".expo/**", "node_modules/.cache/metro/**"],
-      "outputMode": "new-only"
+      "outputLogs": "new-only"
     },
     "start": {
       "cache": false,
