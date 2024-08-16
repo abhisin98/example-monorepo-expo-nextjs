@@ -1,14 +1,13 @@
 {
   "name": "@monorepo/hello-ui",
   "version": "0.1.0",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
-  "react-native": "components/index.ts",
-  "source": "components/index.ts",
+  "files": [
+    "components/**"
+  ],
   "scripts": {
-    "build": "concurrently \"pnpm:build:* {@}\" -P -g --timings --kill-others-on-fail",
+    "build:x": "concurrently \"pnpm:build:* {@}\" -P -g --timings --kill-others-on-fail",
     "lint": "eslint \"components/**\"",
-    "test": "jest",
+    "test:x": "jest",
     "clean": "rm -rf .turbo build",
     "type-check": "tsc --noEmit",
     "build:tsc": "tsc --emitDeclarationOnly",
@@ -16,31 +15,30 @@
   },
   "dependencies": {
     "@expo/html-elements": "^0.10.1",
-    "@gluestack-ui/nativewind-utils": "^1.0.23",
+    "@gluestack-ui/button": "^1.0.7",
+    "@gluestack-ui/input": "^0.1.31",
     "@gluestack-ui/overlay": "^0.1.15",
-    "@gluestack-ui/toast": "^1.0.7",
-    "jscodeshift": "0.15.2",
-    "nativewind": "4.0.36",
-    "prettier": "^3.3.3",
-    "tailwindcss": "^3.4.7"
+    "@gluestack-ui/toast": "^1.0.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.21.4",
     "@monorepo/eslint-config": "workspace:*",
     "@monorepo/tsconfig": "workspace:*",
     "@types/react": "^18.2.79",
-    "@types/react-native": "~0.71.5",
-    "babel-preset-expo": "^11.0.12",
-    "eslint": "8.56.0",
-    "react": "^18.2.0",
-    "react-native": "0.74.3",
-    "react-native-svg": "13.4.0",
-    "typescript": "^5.3.3"
+    "@types/react-native": "~0.73.0",
+    "eslint": "8.57.0",
+    "jscodeshift": "17.0.0",
+    "nativewind": "^4.0.36",
+    "prettier": "^3.3.3",
+    "react-native-svg": "15.2.0",
+    "tailwindcss": "^3.4.10",
+    "typescript": "5.3.3"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*",
-    "react-native-svg": "*"
+    "@gluestack-ui/nativewind-utils": ">=1.0",
+    "nativewind": ">=4.0",
+    "react": ">=16",
+    "react-native": ">=0.72",
+    "react-native-svg": ">=13.4",
+    "tailwindcss": ">=3.0"
   }
 }

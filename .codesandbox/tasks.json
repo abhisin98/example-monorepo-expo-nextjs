@@ -5,7 +5,7 @@
       "name": "Start development server",
       "command": "pnpm run dev",
       "preview": { "port": 3000, "pr-link": "direct" },
-      "runAtStart": true
+      "runAtStart": false
     },
     "build": {
       "name": "build",

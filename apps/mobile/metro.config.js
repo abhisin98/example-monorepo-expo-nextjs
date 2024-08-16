@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 const { getDefaultConfig } = require("expo/metro-config");
 const { withNativeWind } = require("nativewind/metro");
 

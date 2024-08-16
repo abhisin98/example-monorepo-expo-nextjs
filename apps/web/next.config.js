@@ -4,7 +4,7 @@ const { withGluestackUI } = require("@gluestack/ui-next-adapter");
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  transpilePackages: ["nativewind", "react-native-css-interop"],
+  transpilePackages: ["nativewind", "react-native-css-interop", "@monorepo/hello-ui"],
 };
 
 module.exports = withGluestackUI(nextConfig);

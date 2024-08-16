@@ -6,5 +6,5 @@
       "rootDir": ["apps/web"]
     }
   },
-  "ignorePatterns": ["**/*.json", "node_modules", "build", ".turbo", ".next", ".expo"]
+  "ignorePatterns": ["**/*.json", "node_modules", "build", ".turbo", ".next", ".expo", "*.css"]
 }
