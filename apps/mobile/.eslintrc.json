@@ -1,7 +1,7 @@
 {
   "root": true,
   "extends": "@monorepo/eslint-config/native",
-  "ignorePatterns": ["node_modules", "build", ".expo", ".expo-shared"],
+  "ignorePatterns": ["node_modules", "build", ".expo", ".expo-shared", "*.css"],
   "overrides": [
     {
       "files": ["*.js"],
