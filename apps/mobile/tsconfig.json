@@ -2,7 +2,10 @@
   "extends": "@monorepo/tsconfig/native.json",
   "compilerOptions": {
     "strict": true
+    // "paths": {
+    //   "@/*": ["./"]
+    // }
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "index.js"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "nativewind-env.d.ts"],
   "exclude": ["node_modules"]
 }

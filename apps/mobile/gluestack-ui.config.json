@@ -5,6 +5,6 @@
   },
   "app": {
     "entry": "src/app/_layout.tsx",
-    "components": "@monorepo/hello-ui/components/ui"
+    "components": "../../packages/hello-ui/components"
   }
 }

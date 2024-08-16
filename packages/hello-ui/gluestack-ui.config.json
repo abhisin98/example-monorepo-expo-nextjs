@@ -1,5 +1,5 @@
 {
   "app": {
-    "components": "components/ui"
+    "components": "components"
   }
 }

@@ -1,14 +1,18 @@
-import { GluestackUIProvider } from "@monorepo/hello-ui";
+// Import your global CSS file
+import "../../global.css";
+
+import { GluestackUIProvider } from "@monorepo/hello-ui/components/gluestack-ui-provider";
 import type { Metadata } from "next";
 
-import "../../global.css";
 import StyledJsxRegistry from "./registry";
 
+// --------------------------------------------------------------------
 export const metadata: Metadata = {
   title: "MonoRepo",
   description: "Created by Abhi Sinha",
 };
 
+// --------------------------------------------------------------------
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang='en'>

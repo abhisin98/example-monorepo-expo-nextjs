@@ -2,13 +2,14 @@
   "extends": "@monorepo/tsconfig/native.json",
   "compilerOptions": {
     "strict": true,
-    "rootDir": "./components",
-    "declaration": true,
-    "outDir": "./build",
-    "skipLibCheck": true,
-    "noEmit": false,
-    "declarationMap": false,
-    "tsBuildInfoFile": "./build/.tsbuildinfo"
+    // "rootDir": "./components",
+    // "declaration": true,
+    // "outDir": "./build",
+    // "skipLibCheck": true,
+    // "noEmit": false,
+    // "declarationMap": false,
+    // "tsBuildInfoFile": "./build/.tsbuildinfo",
+    "types": ["nativewind/types"]
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "build", "**/__tests__", "jest.config.ts"]
