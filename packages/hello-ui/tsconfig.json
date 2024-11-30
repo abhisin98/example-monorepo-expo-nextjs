@@ -9,8 +9,8 @@
     // "noEmit": false,
     // "declarationMap": false,
     // "tsBuildInfoFile": "./build/.tsbuildinfo",
-    "types": ["nativewind/types"]
+     "jsxImportSource": "nativewind"
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["nativewind-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "build", "**/__tests__", "jest.config.ts"]
 }

@@ -71,12 +71,6 @@ export function GluestackUIProvider({ mode = "light", ...props }: { mode?: "ligh
 
   return (
     <>
-      <script
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: `(${script.toString()})('${mode}')`,
-        }}
-      />
       <OverlayProvider>
         <ToastProvider>{props.children}</ToastProvider>
       </OverlayProvider>

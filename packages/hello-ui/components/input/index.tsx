@@ -20,9 +20,11 @@ type IPrimitiveIcon = {
   stroke?: string;
   as?: React.ElementType;
   className?: string;
+  classNameColor?: string;
 };
 
-const PrimitiveIcon = React.forwardRef<React.ElementRef<typeof Svg>, IPrimitiveIcon>(({ height, width, fill, color, size, stroke = "currentColor", as: AsComp, ...props }, ref) => {
+const PrimitiveIcon = React.forwardRef<React.ElementRef<typeof Svg>, IPrimitiveIcon>(({ height, width, fill, color, classNameColor, size, stroke = "currentColor", as: AsComp, ...props }, ref) => {
+  color = color ?? classNameColor;
   const sizeProps = useMemo(() => {
     if (size) return { size };
     if (height && width) return { height, width };
@@ -31,12 +33,20 @@ const PrimitiveIcon = React.forwardRef<React.ElementRef<typeof Svg>, IPrimitiveI
     return {};
   }, [size, height, width]);
 
-  const colorProps = stroke === "currentColor" && color !== undefined ? color : stroke;
+  let colorProps = {};
+  if (fill) {
+    colorProps = { ...colorProps, fill };
+  }
+  if (stroke !== "currentColor") {
+    colorProps = { ...colorProps, stroke };
+  } else if (stroke === "currentColor" && color !== undefined) {
+    colorProps = { ...colorProps, stroke: color };
+  }
 
   if (AsComp) {
-    return <AsComp ref={ref} fill={fill} {...props} {...sizeProps} stroke={colorProps} />;
+    return <AsComp ref={ref} {...props} {...sizeProps} {...colorProps} />;
   }
-  return <Svg ref={ref} height={height} width={width} fill={fill} stroke={colorProps} {...props} />;
+  return <Svg ref={ref} height={height} width={width} {...colorProps} {...props} />;
 });
 
 const InputWrapper = React.forwardRef<React.ElementRef<typeof View>, React.ComponentProps<typeof View>>(({ ...props }, ref) => {
@@ -124,16 +134,16 @@ cssInterop(UIInput.Slot, { className: "style" });
 cssInterop(UIInput.Input, {
   className: { target: "style", nativeStyleToProp: { textAlign: true } },
 });
-// @ts-expect-error
+//@ts-ignore
 cssInterop(UIInput.Icon, {
   className: {
+    // @ts-expect-error
     target: "style",
     nativeStyleToProp: {
       height: true,
       width: true,
-      // @ts-ignore
       fill: true,
-      color: true,
+      color: "classNameColor",
       stroke: true,
     },
   },

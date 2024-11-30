@@ -1,13 +1,16 @@
 {
   "root": true,
   "extends": "@monorepo/eslint-config/native",
-  "ignorePatterns": ["node_modules", "build", ".expo", ".expo-shared", "*.css"],
-  "overrides": [
-    {
-      "files": ["*.js"],
-      "env": {
-        "node": true
-      }
-    }
-  ]
+  // "overrides": [
+  //   {
+  //     "files": ["*.js"],
+  //     "env": {
+  //       "node": true
+  //     }
+  //   }
+  // ]
+  "settings": {
+    "import/ignore": ["node_modules(\\\\|/)react-native(\\\\|/)index\\.js$"]
+  },
+  "ignorePatterns": ["node_modules", "build", ".expo", ".expo-shared", "*.css"]
 }

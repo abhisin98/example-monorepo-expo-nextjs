@@ -1,8 +1,6 @@
 /** @type {import("@babel/core").ConfigFunction} */
 module.exports = function (api) {
   api.cache(true);
-  process.env.EXPO_USE_METRO_WORKSPACE_ROOT = true;
-
   return {
     presets: [
       [
@@ -14,14 +12,12 @@ module.exports = function (api) {
       "nativewind/babel",
     ],
     plugins: [
+      "react-native-reanimated/plugin",
       [
         "module-resolver",
         {
-          root: ["./"],
-
-          // alias: {
-          //   "@": "./",
-          // },
+          root: ["./src"],
+          alias: { "@": "./src", "tailwind.config": "./tailwind.config.js" },
         },
       ],
     ],
