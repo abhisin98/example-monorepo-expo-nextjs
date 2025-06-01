@@ -149,22 +149,9 @@ const BadgeIcon = React.forwardRef<React.ComponentRef<typeof Svg>, IBadgeIconPro
   const { size: parentSize, action: parentAction } = useStyleContext(SCOPE);
 
   if (typeof size === "number") {
-    return (
-      <UIIcon
-        ref={ref}
-        {...props}
-        className={badgeIconStyle({ class: className })}
-        size={size}
-      />
-    );
+    return <UIIcon ref={ref} {...props} className={badgeIconStyle({ class: className })} size={size} />;
   } else if ((props?.height !== undefined || props?.width !== undefined) && size === undefined) {
-    return (
-      <UIIcon
-        ref={ref}
-        {...props}
-        className={badgeIconStyle({ class: className })}
-      />
-    );
+    return <UIIcon ref={ref} {...props} className={badgeIconStyle({ class: className })} />;
   }
   return (
     <UIIcon
