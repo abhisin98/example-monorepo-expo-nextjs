@@ -1,46 +1,77 @@
-# Turborepo starter
+# Example Monorepo: Expo + Next.js
 
-This is an official pnpm starter turborepo.
+## 🚀 Overview
+This repository is a monorepo combining **Expo** (React Native) and **Next.js** (React for Web). It enables seamless development across mobile and web using shared components.
 
-## What's inside?
+## What's Inside?  
+This monorepo uses [pnpm](https://pnpm.io) as its package manager and includes multiple applications and shared packages.  
+Each package and application is built with **100% [TypeScript](https://www.typescriptlang.org/)**, ensuring strong type safety and developer-friendly code.  
 
-This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
-
-### Apps and Packages
-
-- `mobile`: a [expo](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `hello-ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config`: `eslint` configurations (includes `eslint-config-universe` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-pnpm run build
+### 📂 Folder Structure
+```bash
+example-monorepo-expo-nextjs/
+├── apps/
+│   ├── mobile/          # Expo mobile application
+│   ├── web/             # Next.js web application
+├── packages/
+│   ├── eslint-config/   # Shared ESLint configuration for code consistency
+│   ├── hello-ui/        # Shared UI components used by both `web` and `mobile` apps
+│   ├── tsconfig/        # Shared TypeScript configurations across the monorepo
+├── package.json         # Root package management and dependencies
+├── README.md            # Project documentation and guidelines
+├── jest.config.ts       # Jest configuration for testing
+├── tailwind.config.js   # Tailwind CSS configuration for styling
 ```
 
-### Develop
+## 🛠️ Setup & Installation
+### Prerequisites
+Node.js v20+
+PNPM (recommended)
 
-To develop all apps and packages, run the following command:
+### Install Dependencies
+Run the following in the root directory:
+```sh
+pnpm install
+```
 
+### Run Development Servers
+Mobile (Expo):
+```sh
+cd apps/mobile
+pnpm dev
+```
+
+Web (Next.js):
+```sh
+cd apps/web
+pnpm dev
+```
+
+Run the following command in the root directory to start development for all apps and packages:
 ```
 pnpm run dev
 ```
 
-### Remote Caching
+## 🏗️ Build Apps
+Mobile (Expo):
+```sh
+cd apps/mobile
+pnpm build
+```
+
+Web (Next.js):
+```sh
+cd apps/web
+pnpm build
+```
+
+Run the following command in the root directory to start build for all apps and packages:
+```sh
+pnpm  build
+```
+
+## 🚀 Remote Caching (Turbo)
+### Enable Turbo Remote Caching with:
 
 Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
@@ -49,7 +80,6 @@ By default, Turborepo will cache locally. To enable Remote Caching you will need
 ```
 pnpm dlx turbo login
 ```
-
 This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
 Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
@@ -58,13 +88,49 @@ Next, you can link your Turborepo to your Remote Cache by running the following 
 pnpm dlx turbo link
 ```
 
-## Useful Links
+## 📝 License
+This project is licensed under the **MIT License**.  
+You are free to use, modify, distribute, and contribute to this project within the terms of the license.  
+For full details, refer to the official MIT License documentation:  
+[MIT License](https://opensource.org/licenses/MIT)
 
-Learn more about the power of Turborepo:
+## 🤝 Contribution Guidelines
+We welcome contributions to improve this project! Follow these steps to contribute:
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+### **1️⃣ Fork the Repository**
+Click the **Fork** button in the top right corner of this repository to create your own copy.
+
+### **2️⃣ Clone Your Forked Repository**
+Use the following command to clone the project locally:
+```sh
+git clone https://github.com/YOUR_USERNAME/example-monorepo-expo-nextjs.git
+```
+
+### **3️⃣ Create a New Branch**
+```sh
+git checkout -b feature-branch
+```
+
+### **4️⃣ Make Your Changes & Commit**
+Modify the code or documentation as needed, then commit your changes:
+```sh
+git add .
+git commit -m "Added new feature"
+```
+
+### **5️⃣ Push Changes**
+```sh
+git push origin feature-branch
+```
+
+### **6️⃣ Open a Pull Request**
+* Navigate to the original repository on GitHub.
+
+* Click New Pull Request.
+
+* Select your forked repository and the branch you made changes in.
+
+* Describe the modifications and submit the pull request.
+
+## 🚀 Happy Coding! 
+By contributing, you agree to maintain code quality, follow best practices, and help build a better development experience. Feel free to suggest improvements via issues or discussions.
