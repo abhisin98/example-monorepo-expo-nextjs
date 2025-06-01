@@ -1,0 +1,52 @@
+name: Build Android and iOS Apps and Submit to Store
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: Platform to build for (all/android/ios)
+        type: choice
+        required: true
+        default: all
+        options:
+          - all
+          - android
+          - ios
+
+jobs:
+  Build-Apps-And-Submit-To-Store:
+    name: Build-Apps-And-Submit-To-Store
+    runs-on: ubuntu-latest
+    environment:
+      name: Build-Apps-And-Submit-To-Store
+      url: ${{ env.INSPECT_URL }} # Stores APK deployment URL dynamically
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }} # Authentication for Expo
+
+      - name: Build Android and iOS Apps and Submit to Store 🚀
+        working-directory: apps/mobile
+        run: eas build --non-interactive --wait --auto-submit --profile production --platform=${{ github.event.inputs.platform }}  | tee deploy.log
+        # env:
+        #   EAS_SUBMIT_ANDROID_SERVICE_ACCOUNT_JSON: ${{ secrets.EAS_SUBMIT_ANDROID_SERVICE_ACCOUNT_JSON }} # Authentication for Google Play
+        #   EAS_SUBMIT_IOS_APP_SPECIFIC_PASSWORD: ${{ secrets.EAS_SUBMIT_IOS_APP_SPECIFIC_PASSWORD }} # Authentication for App Store Connect
+        #   EAS_SUBMIT_IOS_APP_STORE_CONNECT_API_KEY: ${{ secrets.EAS_SUBMIT_IOS_APP_STORE_CONNECT_API_KEY }} # Authentication for App Store Connect
+
+      - name: Extract Deployment URLs
+        working-directory: apps/mobile
+        run: |
+          INSPECT_URL=$(grep -oE 'https://expo\.dev/accounts/[[:alnum:]./-]*' deploy.log | head -1)
+          echo "INSPECT_URL=$INSPECT_URL" >> $GITHUB_ENV
+
+      - name: Log Deployment URLs
+        run: |
+          echo "Inspect URL: ${{ env.INSPECT_URL }}"

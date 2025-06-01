@@ -18,7 +18,7 @@ cssInterop(H5, { className: "style" });
 cssInterop(H6, { className: "style" });
 
 const MappedHeading = memo(
-  forwardRef<React.ElementRef<typeof H1>, IHeadingProps>(({ size, className, isTruncated, bold, underline, strikeThrough, sub, italic, highlight, ...props }, ref) => {
+  forwardRef<React.ComponentRef<typeof H1>, IHeadingProps>(function MappedHeading({ size, className, isTruncated, bold, underline, strikeThrough, sub, italic, highlight, ...props }, ref) {
     switch (size) {
       case "5xl":
       case "4xl":
@@ -37,7 +37,7 @@ const MappedHeading = memo(
               class: className,
             })}
             {...props}
-            // @ts-expect-error
+            // @ts-expect-error : type issue
             ref={ref}
           />
         );
@@ -56,7 +56,7 @@ const MappedHeading = memo(
               class: className,
             })}
             {...props}
-            // @ts-expect-error
+            // @ts-expect-error : type issue
             ref={ref}
           />
         );
@@ -75,7 +75,7 @@ const MappedHeading = memo(
               class: className,
             })}
             {...props}
-            // @ts-expect-error
+            // @ts-expect-error : type issue
             ref={ref}
           />
         );
@@ -94,7 +94,7 @@ const MappedHeading = memo(
               class: className,
             })}
             {...props}
-            // @ts-expect-error
+            // @ts-expect-error : type issue
             ref={ref}
           />
         );
@@ -113,7 +113,7 @@ const MappedHeading = memo(
               class: className,
             })}
             {...props}
-            // @ts-expect-error
+            // @ts-expect-error : type issue
             ref={ref}
           />
         );
@@ -133,7 +133,7 @@ const MappedHeading = memo(
               class: className,
             })}
             {...props}
-            // @ts-expect-error
+            // @ts-expect-error : type issue
             ref={ref}
           />
         );
@@ -152,7 +152,7 @@ const MappedHeading = memo(
               class: className,
             })}
             {...props}
-            // @ts-expect-error
+            // @ts-expect-error : type issue
             ref={ref}
           />
         );
@@ -161,7 +161,7 @@ const MappedHeading = memo(
 );
 
 const Heading = memo(
-  forwardRef<React.ElementRef<typeof H1>, IHeadingProps>(({ className, size = "lg", as: AsComp, ...props }, ref) => {
+  forwardRef<React.ComponentRef<typeof H1>, IHeadingProps>(function Heading({ className, size = "lg", as: AsComp, ...props }, ref) {
     const { isTruncated, bold, underline, strikeThrough, sub, italic, highlight } = props;
 
     if (AsComp) {

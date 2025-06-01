@@ -1,53 +1,56 @@
 {
   "name": "monorepo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=v18.15.0"
+    "node": ">=v20.10.0"
   },
-  "packageManager": "pnpm@9.14.4",
+  "packageManager": "pnpm@10.11.0",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/**/*"
   ],
   "scripts": {
     "dev": "turbo dev --parallel",
-    "build": "turbo build",
-    "start": "turbo start",
+    "build": "turbo build --concurrency 1 --continue",
     "lint": "turbo lint",
+    "lint:packages": "turbo lint --filter=@monorepo/*",
     "lint:all": "eslint . --ignore-path .gitignore --ignore-path .eslintignore",
+    "type-check": "turbo type-check",
+    "type-check:packages": "turbo type-check --filter=@monorepo/*",
     "test": "turbo test --concurrency 1 --continue",
+    "test:packages": "turbo test --concurrency 1 --continue --filter=@monorepo/*",
     "test:all": "jest",
     "clean": "rimraf -v --glob \"./{apps,packages}/**/{.turbo,.next,.expo,build}\"",
     "clean:all": "rimraf -v --glob \"./**/{node_modules,.turbo,.next,.expo,build}\"",
-    "type-check": "turbo type-check",
+    "start": "turbo start",
     "format": "prettier --write \"**/*.*\" --config .prettierrc.json  --ignore-path .gitignore --ignore-path .prettierignore",
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@expo/ngrok": "4.1.0",
+    "@expo/ngrok": "latest",
     "@monorepo/eslint-config": "workspace:^",
-    "@swc/cli": "^0.5.1",
-    "@swc/core": "^1.9.3",
-    "@swc/jest": "^0.2.37",
-    "@testing-library/react-native": "12.9.0",
+    "@swc/cli": "^0.7.7",
+    "@swc/core": "^1.11.29",
+    "@swc/jest": "^0.2.38",
+    "@testing-library/react-native": "13.2.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "22.10.1",
-    "@types/react-test-renderer": "18.3.0",
-    "concurrently": "^9.1.0",
-    "dotenv": "^16.4.5",
+    "@types/node": "22.15.29",
+    "@types/react-test-renderer": "19.1.0",
+    "concurrently": "latest",
+    "dotenv": "^16.5.0",
     "dotenv-cli": "latest",
     "eslint": "8.57.0",
     "jest": "^29.7.0",
-    "jest-expo": "^52.0.2",
+    "jest-expo": "^53.0.5",
     "patch-package": "latest",
-    "prettier": "^3.4.1",
-    "react-test-renderer": "18.3.1",
-    "rimraf": "^6.0.1",
-    "ts-jest": "^29.2.5",
+    "prettier": "^3.5.3",
+    "react-test-renderer": "19.1.0",
+    "rimraf": "latest",
+    "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
     "turbo": "latest",
-    "typescript": "~5.7.2"
+    "typescript": "~5.8.3"
   },
   "pnpm": {
     "peerDependencyRules": {

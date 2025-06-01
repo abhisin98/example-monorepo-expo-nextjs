@@ -1,90 +1,77 @@
-name: CI
+name: Continuous Integration
+
+env:
+  # Environment Variables:
+  # - Used to configure settings such as database connections and API keys.
+  # - It's best to store sensitive values in GitHub Secrets for security.
+  EXPO_USE_FAST_RESOLVER: true # Enables a faster Metro resolver in Expo SDK 51.
 
 on:
-  push:
-    branches: ["main"]
   pull_request:
     types: [opened, synchronize]
+    # Runs the workflow when a pull request is opened or updated (new commits pushed).
+    # Useful for running checks like linting and tests before merging code.
+
+  push:
+    branches:
+      - main # Runs the workflow when code is pushed directly to the `main` branch.
+      # Ensures automatic deployment or integration checks.
 
 jobs:
-  build:
-    name: Build 🏗️
-    runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     os: [ubuntu-latest, windows-latest, macOS-latest]
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Setup
-        uses: ./.github/workflows/setup
-        with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
-
-      - name: ⚡️ Build apps and packages
-        run: pnpm build
-
-      # - name: 🚀 Build mobile
-      #   working-directory: apps/mobile
-      #   run: eas build --non-interactive --wait --profile development --platform android
-
   lint:
     name: Lint ✅
-    needs: build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out code
-        uses: actions/checkout@v3
+      - name: Check out code # Fetches the latest code from the repository.
+        uses: actions/checkout@v4
 
-      - name: Setup
-        uses: ./.github/workflows/setup
-        with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+      - name: Setup # Executes setup scripts for dependencies.
+        uses: ./.github/actions/setup
 
       - name: Lint
         run: pnpm lint
 
-  test:
-    name: Test 🧪
-    needs: build
+  type-check:
+    name: Type Check 📝
+    needs: lint # Ensures `lint` job runs first before this job executes.
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Check out code
+        uses: actions/checkout@v4
 
       - name: Setup
-        uses: ./.github/workflows/setup
-        with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+        uses: ./.github/actions/setup
+
+      - name: Type Check
+        run: pnpm type-check
+
+  test:
+    name: Test 🧪
+    needs: type-check
+    runs-on: ubuntu-latest
+    # strategy:
+    #   matrix:
+    #     os: [ubuntu-latest, windows-latest, macOS-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
 
       - name: Test
         run: pnpm test
 
-  # deploy:
-  #   name: Deploy Web 🚀
-  #   needs: [build, lint, test]
-  #   runs-on: ubuntu-latest
+  build:
+    name: Build 🏗️
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
 
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
+      - name: Setup
+        uses: ./.github/actions/setup
 
-  #     - name: Setup
-  #       uses: ./.github/workflows/setup
-  #       with:
-  #         expo-token: ${{ secrets.EXPO_TOKEN }}
-
-  #     - name: ⚡️ Build apps and packages
-  #       run: pnpm build
-
-  #     - name: deploy to Netlify
-  #       uses: netlify/actions/cli@master
-  #       with:
-  #         args: deploy --build --prod
-  #       env:
-  #         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
-  #         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: ⚡️ Build apps and packages
+        run: pnpm build

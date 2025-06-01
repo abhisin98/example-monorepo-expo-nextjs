@@ -1,3 +1,14 @@
 {
-  "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "expo.vscode-expo-tools"]
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "aaron-bond.better-comments",
+    "firsttris.vscode-jest-runner",
+    "wix.vscode-import-cost",
+    "mgmcdermott.vscode-language-babel",
+    "christian-kohler.path-intellisense",
+    "expo.vscode-expo-tools",
+    "gluestack.gluestack-vscode",
+    "bradlc.vscode-tailwindcss"
+  ]
 }

@@ -5,7 +5,8 @@ import { View, Dimensions, Platform, ViewProps } from "react-native";
 
 import { gridStyle, gridItemStyle } from "./styles";
 import { useBreakpointValue, getBreakPointValue } from "../utils/use-break-point-value";
-const { width } = Dimensions.get("window");
+
+const { width: DEVICE_WIDTH } = Dimensions.get("window");
 
 const GridContext = createContext<any>({});
 
@@ -102,7 +103,7 @@ type IGridProps = ViewProps &
     };
   };
 
-const Grid = forwardRef<React.ElementRef<typeof View>, IGridProps>(({ className, _extra, children, ...props }, ref) => {
+const Grid = forwardRef<React.ComponentRef<typeof View>, IGridProps>(function Grid({ className, _extra, children, ...props }, ref) {
   const [calculatedWidth, setCalculatedWidth] = useState<number | null>(null);
 
   const gridClass = _extra?.className;
@@ -114,7 +115,7 @@ const Grid = forwardRef<React.ElementRef<typeof View>, IGridProps>(({ className,
     const colSpanArr = React.Children.map(children, (child: any) => {
       const gridItemClassName = child?.props?._extra?.className;
 
-      const colSpan2 = getBreakPointValue(generateResponsiveColSpans({ gridItemClassName }), width);
+      const colSpan2 = getBreakPointValue(generateResponsiveColSpans({ gridItemClassName }), DEVICE_WIDTH);
       const colSpan = colSpan2 ? colSpan2 : 1;
 
       if (colSpan > responsiveNumColumns) {
@@ -137,7 +138,7 @@ const Grid = forwardRef<React.ElementRef<typeof View>, IGridProps>(({ className,
 
   const childrenWithProps = React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, { index } as any);
+      return React.cloneElement(child, { key: index, index } as any);
     }
 
     return child;
@@ -169,12 +170,12 @@ const Grid = forwardRef<React.ElementRef<typeof View>, IGridProps>(({ className,
         className={gridStyle({
           class: className + " " + gridClassMerged,
         })}
-        onLayout={(event: any) => {
+        onLayout={(event) => {
           const paddingLeftToSubtract = props?.paddingStart || props?.paddingLeft || props?.padding || 0;
 
           const paddingRightToSubtract = props?.paddingEnd || props?.paddingRight || props?.padding || 0;
 
-          const gridWidth = event.nativeEvent.layout.width - paddingLeftToSubtract - paddingRightToSubtract - borderWidthToSubtract;
+          const gridWidth = Math.floor(event.nativeEvent.layout.width) - paddingLeftToSubtract - paddingRightToSubtract - borderWidthToSubtract;
 
           setCalculatedWidth(gridWidth);
         }}
@@ -185,7 +186,6 @@ const Grid = forwardRef<React.ElementRef<typeof View>, IGridProps>(({ className,
   );
 });
 
-//@ts-ignore
 cssInterop(Grid, {
   className: {
     target: "style",
@@ -214,13 +214,13 @@ type IGridItemProps = ViewProps &
     };
   };
 
-const GridItem = forwardRef<React.ElementRef<typeof View>, IGridItemProps>(({ className, _extra, ...props }, ref) => {
+const GridItem = forwardRef<React.ComponentRef<typeof View>, IGridItemProps>(function GridItem({ className, _extra, ...props }, ref) {
   const [flexBasisValue, setFlexBasisValue] = useState<number | string | null>("auto");
 
   const { calculatedWidth, numColumns, itemsPerRow, flexDirection, gap, columnGap } = useContext(GridContext);
 
   const gridItemClass = _extra?.className;
-  const responsiveColSpan: number = useBreakpointValue(generateResponsiveColSpans({ gridItemClassName: gridItemClass })) ?? 1;
+  const responsiveColSpan = (useBreakpointValue(generateResponsiveColSpans({ gridItemClassName: gridItemClass })) ?? 1) as number;
 
   useEffect(() => {
     if (!flexDirection?.includes("column") && calculatedWidth && numColumns > 0 && responsiveColSpan > 0) {
@@ -245,14 +245,15 @@ const GridItem = forwardRef<React.ElementRef<typeof View>, IGridItemProps>(({ cl
   return (
     <View
       ref={ref}
-      // @ts-expect-error
+      // @ts-expect-error : internal implementation for r-19/react-native-web
       gridItemClass={gridItemClass}
       className={gridItemStyle({
-        class: className + " " + Platform.select({ web: gridItemClass ?? "" }) ?? "",
+        class: className,
       })}
       {...props}
       style={[
         {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           flexBasis: flexBasisValue as any,
         },
         props.style,

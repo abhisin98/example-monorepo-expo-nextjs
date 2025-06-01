@@ -5,13 +5,11 @@ module.exports = {
   ...tailwindRootConfig,
   darkMode: "media",
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{html,js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{html,js,ts,jsx,tsx,mdx}",
 
     // Or if using `src` directory:
-    "./src/**/*.{html,js,jsx,ts,tsx}",
-    "./src/core-components/**/**/*.{html,js,jsx,ts,tsx}",
-    "./src/hooks/**/*.{html,js,jsx,ts,tsx,mdx}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
 
     /**
      *
@@ -19,6 +17,6 @@ module.exports = {
      * application in the other you may find that Tailwind won't work for components. To
      * fix that you need to add new entry to content inside tailwind.config.js:
      */
-    "../../packages/hello-ui/components/**/*.{html,js,jsx,ts,tsx,mdx}", // here is path to Tailwind CSS components package
+    "../../packages/hello-ui/components/**/*.{html,js,ts,jsx,tsx,mdx}", // here is path to Tailwind CSS components package
   ],
 };

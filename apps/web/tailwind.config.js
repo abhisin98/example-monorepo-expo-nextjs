@@ -6,14 +6,12 @@ module.exports = {
   darkMode: "class",
   important: "html",
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{html,js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{html,js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{html,js,ts,jsx,tsx,mdx}",
 
     // Or if using `src` directory:
-    "./src/**/*.{html,js,jsx,ts,tsx}",
-    "./src/core-components/**/**/*.{html,js,jsx,ts,tsx}",
-    "./src/hooks/**/*.{html,js,jsx,ts,tsx,mdx}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}",
 
     /**
      *

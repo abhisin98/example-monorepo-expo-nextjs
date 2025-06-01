@@ -1,12 +1,13 @@
+"use client";
+
+import { PrimitiveIcon, UIIcon } from "@gluestack-ui/icon";
 import type { VariantProps } from "@gluestack-ui/nativewind-utils";
 import { tva } from "@gluestack-ui/nativewind-utils/tva";
 import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
-import { withStyleContextAndStates } from "@gluestack-ui/nativewind-utils/withStyleContextAndStates";
 import { createSelect } from "@gluestack-ui/select";
 import { cssInterop } from "nativewind";
-import React, { useMemo } from "react";
-import { Pressable, View, TextInput, Platform } from "react-native";
-import { Svg } from "react-native-svg";
+import React from "react";
+import { Pressable, View, TextInput } from "react-native";
 
 import {
   Actionsheet,
@@ -23,7 +24,7 @@ import {
   ActionsheetSectionHeaderText,
 } from "./select-actionsheet";
 
-const SelectTriggerWrapper = React.forwardRef<React.ElementRef<typeof Pressable>, React.ComponentProps<typeof Pressable>>(({ ...props }, ref) => {
+const SelectTriggerWrapper = React.forwardRef<React.ComponentRef<typeof Pressable>, React.ComponentProps<typeof Pressable>>(function SelectTriggerWrapper({ ...props }, ref) {
   return <Pressable {...props} ref={ref} />;
 });
 
@@ -82,50 +83,12 @@ const selectInputStyle = tva({
   },
 });
 
-type IPrimitiveIcon = {
-  height?: number | string;
-  width?: number | string;
-  fill?: string;
-  color?: string;
-  size?: number | string;
-  stroke?: string;
-  as?: React.ElementType;
-  className?: string;
-  classNameColor?: string;
-};
-
-const PrimitiveIcon = React.forwardRef<React.ElementRef<typeof Svg>, IPrimitiveIcon>(({ height, width, fill, color, classNameColor, size, stroke = "currentColor", as: AsComp, ...props }, ref) => {
-  color = color ?? classNameColor;
-  const sizeProps = useMemo(() => {
-    if (size) return { size };
-    if (height && width) return { height, width };
-    if (height) return { height };
-    if (width) return { width };
-    return {};
-  }, [size, height, width]);
-
-  let colorProps = {};
-  if (fill) {
-    colorProps = { ...colorProps, fill };
-  }
-  if (stroke !== "currentColor") {
-    colorProps = { ...colorProps, stroke };
-  } else if (stroke === "currentColor" && color !== undefined) {
-    colorProps = { ...colorProps, stroke: color };
-  }
-
-  if (AsComp) {
-    return <AsComp ref={ref} {...props} {...sizeProps} {...colorProps} />;
-  }
-  return <Svg ref={ref} height={height} width={width} {...colorProps} {...props} />;
-});
-
 const UISelect = createSelect(
   {
     Root: View,
-    Trigger: Platform.OS === "web" ? withStyleContext(SelectTriggerWrapper) : withStyleContextAndStates(SelectTriggerWrapper),
+    Trigger: withStyleContext(SelectTriggerWrapper),
     Input: TextInput,
-    Icon: PrimitiveIcon,
+    Icon: UIIcon,
   },
   {
     Portal: Actionsheet,
@@ -148,10 +111,9 @@ cssInterop(UISelect.Input, {
   className: { target: "style", nativeStyleToProp: { textAlign: true } },
 });
 cssInterop(SelectTriggerWrapper, { className: "style" });
-//@ts-ignore
-cssInterop(UISelect.Icon, {
+
+cssInterop(PrimitiveIcon, {
   className: {
-    // @ts-expect-error
     target: "style",
     nativeStyleToProp: {
       height: true,
@@ -165,7 +127,7 @@ cssInterop(UISelect.Icon, {
 
 type ISelectProps = VariantProps<typeof selectStyle> & React.ComponentProps<typeof UISelect> & { className?: string };
 
-const Select = React.forwardRef<React.ElementRef<typeof UISelect>, ISelectProps>(({ className, ...props }, ref) => {
+const Select = React.forwardRef<React.ComponentRef<typeof UISelect>, ISelectProps>(function Select({ className, ...props }, ref) {
   return (
     <UISelect
       className={selectStyle({
@@ -179,7 +141,7 @@ const Select = React.forwardRef<React.ElementRef<typeof UISelect>, ISelectProps>
 
 type ISelectTriggerProps = VariantProps<typeof selectTriggerStyle> & React.ComponentProps<typeof UISelect.Trigger> & { className?: string };
 
-const SelectTrigger = React.forwardRef<React.ElementRef<typeof UISelect.Trigger>, ISelectTriggerProps>(({ className, size = "md", variant = "outline", ...props }, ref) => {
+const SelectTrigger = React.forwardRef<React.ComponentRef<typeof UISelect.Trigger>, ISelectTriggerProps>(function SelectTrigger({ className, size = "md", variant = "outline", ...props }, ref) {
   return (
     <UISelect.Trigger
       className={selectTriggerStyle({
@@ -196,7 +158,7 @@ const SelectTrigger = React.forwardRef<React.ElementRef<typeof UISelect.Trigger>
 
 type ISelectInputProps = VariantProps<typeof selectInputStyle> & React.ComponentProps<typeof UISelect.Input> & { className?: string };
 
-const SelectInput = React.forwardRef<React.ElementRef<typeof UISelect.Input>, ISelectInputProps>(({ className, ...props }, ref) => {
+const SelectInput = React.forwardRef<React.ComponentRef<typeof UISelect.Input>, ISelectInputProps>(function SelectInput({ className, ...props }, ref) {
   const { size: parentSize, variant: parentVariant } = useStyleContext();
   return (
     <UISelect.Input
@@ -215,11 +177,15 @@ const SelectInput = React.forwardRef<React.ElementRef<typeof UISelect.Input>, IS
 
 type ISelectIcon = VariantProps<typeof selectIconStyle> & React.ComponentProps<typeof UISelect.Icon> & { className?: string };
 
-const SelectIcon = React.forwardRef<React.ElementRef<typeof UISelect.Icon>, ISelectIcon>(({ className, size, ...props }, ref) => {
+const SelectIcon = React.forwardRef<React.ComponentRef<typeof UISelect.Icon>, ISelectIcon>(function SelectIcon({ className, size, ...props }, ref) {
   const { size: parentSize } = useStyleContext();
   if (typeof size === "number") {
     return <UISelect.Icon ref={ref} {...props} className={selectIconStyle({ class: className })} size={size} />;
-  } else if ((props?.height !== undefined || props?.width !== undefined) && size === undefined) {
+  } else if (
+    //@ts-expect-error : web only
+    (props?.height !== undefined || props?.width !== undefined) &&
+    size === undefined
+  ) {
     return <UISelect.Icon ref={ref} {...props} className={selectIconStyle({ class: className })} />;
   }
   return (
@@ -249,8 +215,6 @@ const SelectContent = UISelect.Content;
 const SelectDragIndicator = UISelect.DragIndicator;
 const SelectDragIndicatorWrapper = UISelect.DragIndicatorWrapper;
 const SelectItem = UISelect.Item;
-// @ts-expect-error
-const SelectItemText = UISelect.ItemText;
 const SelectScrollView = UISelect.ScrollView;
 const SelectVirtualizedList = UISelect.VirtualizedList;
 const SelectFlatList = UISelect.FlatList;
@@ -268,7 +232,6 @@ export {
   SelectDragIndicator,
   SelectDragIndicatorWrapper,
   SelectItem,
-  SelectItemText,
   SelectScrollView,
   SelectVirtualizedList,
   SelectFlatList,

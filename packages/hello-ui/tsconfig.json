@@ -9,7 +9,10 @@
     // "noEmit": false,
     // "declarationMap": false,
     // "tsBuildInfoFile": "./build/.tsbuildinfo",
-     "jsxImportSource": "nativewind"
+    "jsxImportSource": "nativewind",
+    "paths": {
+      "tailwind.config": ["../../tailwind.config.js"]
+    }
   },
   "include": ["nativewind-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "build", "**/__tests__", "jest.config.ts"]

@@ -1,29 +1,40 @@
 {
   "cli": {
-    "version": ">= 3.9.3"
+    "version": ">= 14.4.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
+      "channel": "development",
+      "autoIncrement": true,
       "developmentClient": true,
       "distribution": "internal",
-      "android": {
-        "buildType": "apk"
-      },
+      "env": {
+        "APP_VARIANT": "development"
+      }
+    },
+    "ios-simulator": {
+      "extends": "development",
       "ios": {
-        "resourceClass": "m-medium"
+        "simulator": true
       }
     },
     "preview": {
-      "android": {
-        "buildType": "apk"
-      },
-      "ios": {
-        "resourceClass": "m-medium"
+      "channel": "preview",
+      "autoIncrement": true,
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "preview"
       }
     },
     "production": {
+      "channel": "production",
+      "autoIncrement": true,
+      "android": {
+        "image": "latest"
+      },
       "ios": {
-        "resourceClass": "m-medium"
+        "image": "latest"
       }
     }
   },

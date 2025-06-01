@@ -1,52 +1,14 @@
 "use client";
-import { createIcon } from "@gluestack-ui/icon";
+import { createIcon, PrimitiveIcon, IPrimitiveIcon, Svg } from "@gluestack-ui/icon";
 import { VariantProps } from "@gluestack-ui/nativewind-utils";
 import { tva } from "@gluestack-ui/nativewind-utils/tva";
 import { cssInterop } from "nativewind";
-import React, { useMemo } from "react";
-import { Path, Svg } from "react-native-svg";
-
-type IPrimitiveIcon = {
-  height?: number | string;
-  width?: number | string;
-  fill?: string;
-  color?: string;
-  size?: number | string;
-  stroke?: string;
-  as?: React.ElementType;
-  className?: string;
-  classNameColor?: string;
-};
-
-const PrimitiveIcon = React.forwardRef<React.ElementRef<typeof Svg>, IPrimitiveIcon>(({ height, width, fill, color, classNameColor, size, stroke, as: AsComp, ...props }, ref) => {
-  color = color ?? classNameColor;
-  const sizeProps = useMemo(() => {
-    if (size) return { size };
-    if (height && width) return { height, width };
-    if (height) return { height };
-    if (width) return { width };
-    return {};
-  }, [size, height, width]);
-
-  let colorProps = {};
-  if (fill) {
-    colorProps = { ...colorProps, fill };
-  }
-  if (stroke !== "currentColor") {
-    colorProps = { ...colorProps, stroke };
-  } else if (stroke === "currentColor" && color !== undefined) {
-    colorProps = { ...colorProps, stroke: color };
-  }
-
-  if (AsComp) {
-    return <AsComp ref={ref} {...props} {...sizeProps} {...colorProps} />;
-  }
-  return <Svg ref={ref} height={height} width={width} {...colorProps} {...props} />;
-});
+import React from "react";
+import { Path } from "react-native-svg";
 
 export const UIIcon = createIcon({
   Root: PrimitiveIcon,
-});
+}) as React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<typeof PrimitiveIcon> & React.RefAttributes<React.ComponentRef<typeof Svg>>>;
 
 const iconStyle = tva({
   base: "text-typography-950 fill-none pointer-events-none",
@@ -66,12 +28,9 @@ cssInterop(UIIcon, {
   className: {
     target: "style",
     nativeStyleToProp: {
-      // @ts-expect-error
       height: true,
-      // @ts-expect-error
       width: true,
       fill: true,
-      // @ts-expect-error
       color: "classNameColor",
       stroke: true,
     },
@@ -80,7 +39,7 @@ cssInterop(UIIcon, {
 
 type IIConProps = IPrimitiveIcon & VariantProps<typeof iconStyle> & React.ComponentPropsWithoutRef<typeof UIIcon>;
 
-export const Icon = React.forwardRef<React.ElementRef<typeof Svg>, IIConProps>(({ size = "md", className, ...props }, ref) => {
+const Icon = React.forwardRef<React.ComponentRef<typeof UIIcon>, IIConProps>(function Icon({ size = "md", className, ...props }, ref) {
   if (typeof size === "number") {
     return <UIIcon ref={ref} {...props} className={iconStyle({ class: className })} size={size} />;
   } else if ((props.height !== undefined || props.width !== undefined) && size === undefined) {
@@ -89,20 +48,21 @@ export const Icon = React.forwardRef<React.ElementRef<typeof Svg>, IIConProps>((
   return <UIIcon ref={ref} {...props} className={iconStyle({ size, class: className })} />;
 });
 
+export { Icon };
+
 type ParameterTypes = Omit<Parameters<typeof createIcon>[0], "Root">;
 
 const createIconUI = ({ ...props }: ParameterTypes) => {
-  const UIIconCreateIcon = createIcon({ Root: Svg, ...props });
+  const UIIconCreateIcon = createIcon({
+    Root: Svg,
+    ...props,
+  }) as React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<typeof PrimitiveIcon> & React.RefAttributes<React.ComponentRef<typeof Svg>>>;
 
-  return React.forwardRef<React.ElementRef<typeof Svg>>(({ className, size, ...props }: VariantProps<typeof iconStyle> & React.ComponentPropsWithoutRef<typeof UIIconCreateIcon>, ref) => {
-    return (
-      <UIIconCreateIcon
-        // @ts-ignore
-        ref={ref}
-        {...props}
-        className={iconStyle({ size, class: className })}
-      />
-    );
+  return React.forwardRef<React.ComponentRef<typeof Svg>>(function UIIcon(
+    { className, size, ...inComingProps }: VariantProps<typeof iconStyle> & React.ComponentPropsWithoutRef<typeof UIIconCreateIcon>,
+    ref
+  ) {
+    return <UIIconCreateIcon ref={ref} {...inComingProps} className={iconStyle({ size, class: className })} />;
   });
 };
 export { createIconUI as createIcon };

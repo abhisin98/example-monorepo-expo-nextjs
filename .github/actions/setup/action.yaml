@@ -1,0 +1,42 @@
+name: Setup Monorepo
+description: "Prepare and install all dependencies for the monorepo setup (Pnpm, Node.js)."
+
+inputs:
+  node-version:
+    description: Version of Node to use
+    default: 20
+
+  pnpm-version:
+    description: Version of pnpm to use
+    default: 10
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 🏗 Setup Pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        # version: ${{ inputs.pnpm-version }}
+        run_install: false
+
+    - name: 🏗 Setup Node.js environment
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: "pnpm"
+
+    - name: 📦 Install dependencies
+      run: pnpm install
+      shell: bash
+
+    - name: ♻️ Restore cache
+      uses: actions/cache@v4
+      with:
+        key: turbo-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          turbo-${{ runner.os }}
+        path: |
+          node_modules/.cache/turbo
+          apps/*/.turbo
+          packages/*/.turbo
+          .turbo

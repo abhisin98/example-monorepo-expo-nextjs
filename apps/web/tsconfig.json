@@ -2,6 +2,7 @@
   "extends": "@monorepo/tsconfig/nextjs.json",
   "compilerOptions": {
     "strict": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "tailwind.config": ["./tailwind.config.js"]

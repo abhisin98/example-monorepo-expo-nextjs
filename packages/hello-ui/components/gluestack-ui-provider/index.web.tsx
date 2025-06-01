@@ -7,6 +7,8 @@ import React, { useEffect, useLayoutEffect } from "react";
 import { config } from "./config";
 import { script } from "./script";
 
+export type ModeType = "light" | "dark" | "system";
+
 const variableStyleTagId = "nativewind-style";
 const createStyle = (styleTagId: string) => {
   const style = document.createElement("style");
@@ -17,7 +19,7 @@ const createStyle = (styleTagId: string) => {
 
 export const useSafeLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-export function GluestackUIProvider({ mode = "light", ...props }: { mode?: "light" | "dark" | "system"; children?: React.ReactNode }) {
+export function GluestackUIProvider({ mode = "light", ...props }: { mode?: ModeType; children?: React.ReactNode }) {
   let cssVariablesWithMode = ``;
   Object.keys(config).forEach((configKey) => {
     cssVariablesWithMode += configKey === "dark" ? `\n .dark {\n ` : `\n:root {\n`;
@@ -71,6 +73,12 @@ export function GluestackUIProvider({ mode = "light", ...props }: { mode?: "ligh
 
   return (
     <>
+      <script
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: `(${script.toString()})('${mode}')`,
+        }}
+      />
       <OverlayProvider>
         <ToastProvider>{props.children}</ToastProvider>
       </OverlayProvider>

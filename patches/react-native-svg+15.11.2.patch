@@ -1,0 +1,36 @@
+diff --git a/node_modules/react-native-svg/lib/commonjs/web/utils/prepare.js b/node_modules/react-native-svg/lib/commonjs/web/utils/prepare.js
+index 32b5db7..3f63ae6 100644
+--- a/node_modules/react-native-svg/lib/commonjs/web/utils/prepare.js
++++ b/node_modules/react-native-svg/lib/commonjs/web/utils/prepare.js
+@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
+   value: true
+ });
+ exports.prepare = void 0;
+-var _ = require(".");
++var _ = require("./index");
+ var _resolve = require("../../lib/resolve");
+ var _resolveAssetUri2 = require("../../lib/resolveAssetUri");
+ /**
+diff --git a/node_modules/react-native-svg/lib/module/web/utils/prepare.js b/node_modules/react-native-svg/lib/module/web/utils/prepare.js
+index 796b489..b7e8cb6 100644
+--- a/node_modules/react-native-svg/lib/module/web/utils/prepare.js
++++ b/node_modules/react-native-svg/lib/module/web/utils/prepare.js
+@@ -1,4 +1,4 @@
+-import { hasTouchableProperty, parseTransformProp } from '.';
++import { hasTouchableProperty, parseTransformProp } from './index';
+ import { resolve } from '../../lib/resolve';
+ import { resolveAssetUri } from '../../lib/resolveAssetUri';
+ /**
+diff --git a/node_modules/react-native-svg/src/web/utils/prepare.ts b/node_modules/react-native-svg/src/web/utils/prepare.ts
+index 0679b55..7c8ef17 100644
+--- a/node_modules/react-native-svg/src/web/utils/prepare.ts
++++ b/node_modules/react-native-svg/src/web/utils/prepare.ts
+@@ -4,7 +4,7 @@ import {
+ } from 'react-native';
+ import { BaseProps } from '../types';
+ import { WebShape } from '../WebShape';
+-import { hasTouchableProperty, parseTransformProp } from '.';
++import { hasTouchableProperty, parseTransformProp } from './index';
+ import { resolve } from '../../lib/resolve';
+ import { NumberProp } from '../../lib/extract/types';
+ import { resolveAssetUri } from '../../lib/resolveAssetUri';

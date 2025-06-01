@@ -2,26 +2,30 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
   "prettier.configPath": "",
+
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "graphql"],
   "eslint.options": {
     "extensions": [".js", ".jsx", ".ts", ".tsx", ".graphql"]
   },
   "eslint.workingDirectories": [
     {
-      "mode": "auto"
-    }
+      "mode": "auto",
+      "changeProcessCWD": true
+    },
+    { "directory": "./packages/**/*", "changeProcessCWD": true },
+    { "directory": "./apps/**/*", "changeProcessCWD": true }
   ],
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+
+  "npm.enableRunFromFolder": true,
+  "npm.scriptExplorerAction": "run",
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "json.schemas": [
-    {
-      "fileMatch": [".ncurc", ".ncurc.json"],
-      "url": "https://raw.githubusercontent.com/raineorshine/npm-check-updates/main/src/types/RunOptions.json"
-    }
-  ],
-  "yaml.schemas": {
-    "https://raw.githubusercontent.com/raineorshine/npm-check-updates/main/src/types/RunOptions.json": [".ncurc.yml"]
-  }
+  "gluestack-vscode.snippetstype": "nativewind",
+  "files.autoSave": "onFocusChange"
 }

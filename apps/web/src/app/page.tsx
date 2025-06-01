@@ -1,5 +1,6 @@
 "use client";
-import { Button, ButtonText } from "@monorepo/hello-ui/components/button";
+import { Button, ButtonText, ButtonSpinner, ButtonIcon } from "@monorepo/hello-ui/components/button";
+import { AddIcon } from "@monorepo/hello-ui/components/icon";
 import { Heading } from "@monorepo/hello-ui/components/heading";
 import { View, Text } from "react-native";
 
@@ -13,6 +14,8 @@ export default function HomePage() {
 
         <Button size='md' variant='solid' action='primary'>
           <ButtonText>Hello World!</ButtonText>
+          <ButtonSpinner/>
+          <ButtonIcon as={AddIcon} />
         </Button>
       </View>
     </main>

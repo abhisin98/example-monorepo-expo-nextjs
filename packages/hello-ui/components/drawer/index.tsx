@@ -3,13 +3,15 @@ import { createModal as createDrawer } from "@gluestack-ui/modal";
 import type { VariantProps } from "@gluestack-ui/nativewind-utils";
 import { tva } from "@gluestack-ui/nativewind-utils/tva";
 import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
-import { withStyleContextAndStates } from "@gluestack-ui/nativewind-utils/withStyleContextAndStates";
-import { Motion, AnimatePresence, createMotionAnimatedComponent } from "@legendapp/motion";
+import { Motion, AnimatePresence, createMotionAnimatedComponent, MotionComponentProps } from "@legendapp/motion";
 import { cssInterop } from "nativewind";
 import React from "react";
-import { Pressable, View, ScrollView, Platform, Dimensions } from "react-native";
+import { Pressable, View, ScrollView, Dimensions, ViewStyle } from "react-native";
 
-const AnimatedPressable = createMotionAnimatedComponent(Pressable);
+type IAnimatedPressableProps = React.ComponentProps<typeof Pressable> & MotionComponentProps<typeof Pressable, ViewStyle, unknown, unknown, unknown>;
+
+const AnimatedPressable = createMotionAnimatedComponent(Pressable) as React.ComponentType<IAnimatedPressableProps>;
+
 const SCOPE = "MODAL";
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
@@ -20,27 +22,23 @@ const sizes: { [key: string]: number } = {
   full: 1,
 };
 
+type IMotionViewProps = React.ComponentProps<typeof View> & MotionComponentProps<typeof View, ViewStyle, unknown, unknown, unknown>;
+
+const MotionView = Motion.View as React.ComponentType<IMotionViewProps>;
+
 const UIDrawer = createDrawer({
-  Root: Platform.OS === "web" ? withStyleContext(View, SCOPE) : withStyleContextAndStates(View, SCOPE),
+  Root: withStyleContext(View, SCOPE),
   Backdrop: AnimatedPressable,
-  Content: Motion.View,
+  Content: MotionView,
   Body: ScrollView,
   CloseButton: Pressable,
   Footer: View,
   Header: View,
   AnimatePresence,
 });
-cssInterop(UIDrawer, { className: "style" });
-cssInterop(UIDrawer.Backdrop, { className: "style" });
-cssInterop(UIDrawer.Content, { className: "style" });
-cssInterop(UIDrawer.CloseButton, { className: "style" });
-cssInterop(UIDrawer.Header, { className: "style" });
-cssInterop(UIDrawer.Body, {
-  className: "style",
-  contentContainerClassName: "contentContainerStyle",
-  indicatorClassName: "indicatorStyle",
-});
-cssInterop(UIDrawer.Footer, { className: "style" });
+
+cssInterop(AnimatedPressable, { className: "style" });
+cssInterop(MotionView, { className: "style" });
 
 const drawerStyle = tva({
   base: "w-full h-full web:pointer-events-none relative",
@@ -154,11 +152,11 @@ type IDrawerFooterProps = React.ComponentProps<typeof UIDrawer.Footer> & Variant
 
 type IDrawerCloseButtonProps = React.ComponentProps<typeof UIDrawer.CloseButton> & VariantProps<typeof drawerCloseButtonStyle> & { className?: string };
 
-const Drawer = React.forwardRef<React.ElementRef<typeof UIDrawer>, IDrawerProps>(({ className, size = "sm", anchor = "left", ...props }, ref) => {
+const Drawer = React.forwardRef<React.ComponentRef<typeof UIDrawer>, IDrawerProps>(function Drawer({ className, size = "sm", anchor = "left", ...props }, ref) {
   return <UIDrawer ref={ref} {...props} pointerEvents='box-none' className={drawerStyle({ size, anchor, class: className })} context={{ size, anchor }} />;
 });
 
-const DrawerBackdrop = React.forwardRef<React.ElementRef<typeof UIDrawer.Backdrop>, IDrawerBackdropProps>(({ className, ...props }, ref) => {
+const DrawerBackdrop = React.forwardRef<React.ComponentRef<typeof UIDrawer.Backdrop>, IDrawerBackdropProps>(function DrawerBackdrop({ className, ...props }, ref) {
   return (
     <UIDrawer.Backdrop
       ref={ref}
@@ -188,7 +186,7 @@ const DrawerBackdrop = React.forwardRef<React.ElementRef<typeof UIDrawer.Backdro
   );
 });
 
-const DrawerContent = React.forwardRef<React.ElementRef<typeof UIDrawer.Content>, IDrawerContentProps>(({ className, ...props }, ref) => {
+const DrawerContent = React.forwardRef<React.ComponentRef<typeof UIDrawer.Content>, IDrawerContentProps>(function DrawerContent({ className, ...props }, ref) {
   const { size: parentSize, anchor: parentAnchor } = useStyleContext(SCOPE);
 
   const drawerHeight = screenHeight * (sizes[parentSize] || sizes.md);
@@ -227,7 +225,7 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof UIDrawer.Content>
   );
 });
 
-const DrawerHeader = React.forwardRef<React.ElementRef<typeof UIDrawer.Header>, IDrawerHeaderProps>(({ className, ...props }, ref) => {
+const DrawerHeader = React.forwardRef<React.ComponentRef<typeof UIDrawer.Header>, IDrawerHeaderProps>(function DrawerHeader({ className, ...props }, ref) {
   return (
     <UIDrawer.Header
       ref={ref}
@@ -239,7 +237,7 @@ const DrawerHeader = React.forwardRef<React.ElementRef<typeof UIDrawer.Header>, 
   );
 });
 
-const DrawerBody = React.forwardRef<React.ElementRef<typeof UIDrawer.Body>, IDrawerBodyProps>(({ className, ...props }, ref) => {
+const DrawerBody = React.forwardRef<React.ComponentRef<typeof UIDrawer.Body>, IDrawerBodyProps>(function DrawerBody({ className, ...props }, ref) {
   return (
     <UIDrawer.Body
       ref={ref}
@@ -251,7 +249,7 @@ const DrawerBody = React.forwardRef<React.ElementRef<typeof UIDrawer.Body>, IDra
   );
 });
 
-const DrawerFooter = React.forwardRef<React.ElementRef<typeof UIDrawer.Footer>, IDrawerFooterProps>(({ className, ...props }, ref) => {
+const DrawerFooter = React.forwardRef<React.ComponentRef<typeof UIDrawer.Footer>, IDrawerFooterProps>(function DrawerFooter({ className, ...props }, ref) {
   return (
     <UIDrawer.Footer
       ref={ref}
@@ -263,7 +261,7 @@ const DrawerFooter = React.forwardRef<React.ElementRef<typeof UIDrawer.Footer>, 
   );
 });
 
-const DrawerCloseButton = React.forwardRef<React.ElementRef<typeof UIDrawer.CloseButton>, IDrawerCloseButtonProps>(({ className, ...props }, ref) => {
+const DrawerCloseButton = React.forwardRef<React.ComponentRef<typeof UIDrawer.CloseButton>, IDrawerCloseButtonProps>(function DrawerCloseButton({ className, ...props }, ref) {
   return (
     <UIDrawer.CloseButton
       ref={ref}

@@ -12,5 +12,5 @@
   "settings": {
     "import/ignore": ["node_modules(\\\\|/)react-native(\\\\|/)index\\.js$"]
   },
-  "ignorePatterns": ["node_modules", "build", ".expo", ".expo-shared", "*.css"]
+  "ignorePatterns": ["node_modules", "build", ".expo", ".expo-shared", "*.css", "expo-env.d.ts"]
 }

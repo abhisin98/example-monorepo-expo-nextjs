@@ -4,7 +4,7 @@ import "../../global.css";
 import { GluestackUIProvider } from "@monorepo/hello-ui/components/gluestack-ui-provider";
 import type { Metadata } from "next";
 
-import StyledJsxRegistry from "./registry";
+import StyledJsxRegistry from "../registry";
 
 // --------------------------------------------------------------------
 export const metadata: Metadata = {

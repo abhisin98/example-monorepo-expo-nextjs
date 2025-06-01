@@ -1,69 +1,27 @@
 "use client";
 import { createFab } from "@gluestack-ui/fab";
+import { PrimitiveIcon, UIIcon } from "@gluestack-ui/icon";
 import type { VariantProps } from "@gluestack-ui/nativewind-utils";
 import { tva } from "@gluestack-ui/nativewind-utils/tva";
 import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
-import { withStyleContextAndStates } from "@gluestack-ui/nativewind-utils/withStyleContextAndStates";
 import { cssInterop } from "nativewind";
-import React, { useMemo } from "react";
-import { Platform, Text, Pressable } from "react-native";
-import { Svg } from "react-native-svg";
-
-type IPrimitiveIcon = React.ComponentPropsWithoutRef<typeof Svg> & {
-  height?: number | string;
-  width?: number | string;
-  fill?: string;
-  color?: string;
-  size?: number | string;
-  stroke?: string;
-  as?: React.ElementType;
-  className?: string;
-  classNameColor?: string;
-};
-
-const PrimitiveIcon = React.forwardRef<React.ElementRef<typeof Svg>, IPrimitiveIcon>(({ height, width, fill, color, classNameColor, size, stroke = "currentColor", as: AsComp, ...props }, ref) => {
-  color = color ?? classNameColor;
-  const sizeProps = useMemo(() => {
-    if (size) return { size };
-    if (height && width) return { height, width };
-    if (height) return { height };
-    if (width) return { width };
-    return {};
-  }, [size, height, width]);
-
-  let colorProps = {};
-  if (fill) {
-    colorProps = { ...colorProps, fill };
-  }
-  if (stroke !== "currentColor") {
-    colorProps = { ...colorProps, stroke };
-  } else if (stroke === "currentColor" && color !== undefined) {
-    colorProps = { ...colorProps, stroke: color };
-  }
-
-  if (AsComp) {
-    return <AsComp ref={ref} {...props} {...sizeProps} {...colorProps} />;
-  }
-  return <Svg ref={ref} height={height} width={width} {...colorProps} {...props} />;
-});
+import React from "react";
+import { Pressable, Text } from "react-native";
 
 const SCOPE = "FAB";
+const Root = withStyleContext(Pressable, SCOPE);
 const UIFab = createFab({
-  Root: Platform.OS === "web" ? withStyleContext(Pressable, SCOPE) : withStyleContextAndStates(Pressable, SCOPE),
+  Root,
   Label: Text,
-  Icon: PrimitiveIcon,
+  Icon: UIIcon,
 });
 
-cssInterop(UIFab, { className: "style" });
-cssInterop(UIFab.Label, { className: "style" });
-//@ts-ignore
-cssInterop(UIFab.Icon, {
+cssInterop(PrimitiveIcon, {
   className: {
     target: "style",
     nativeStyleToProp: {
       height: true,
       width: true,
-      //@ts-ignore
       fill: true,
       color: "classNameColor",
       stroke: true,
@@ -153,38 +111,43 @@ const fabIconStyle = tva({
 
 type IFabProps = Omit<React.ComponentPropsWithoutRef<typeof UIFab>, "context"> & VariantProps<typeof fabStyle>;
 
-const Fab = React.forwardRef<React.ElementRef<typeof UIFab>, IFabProps>(({ size = "md", placement = "bottom right", className, ...props }, ref) => {
+const Fab = React.forwardRef<React.ComponentRef<typeof UIFab>, IFabProps>(function Fab({ size = "md", placement = "bottom right", className, ...props }, ref) {
   return <UIFab ref={ref} {...props} className={fabStyle({ size, placement, class: className })} context={{ size }} />;
 });
 
 type IFabLabelProps = React.ComponentPropsWithoutRef<typeof UIFab.Label> & VariantProps<typeof fabLabelStyle>;
 
-const FabLabel = React.forwardRef<React.ElementRef<typeof UIFab.Label>, IFabLabelProps>(
-  ({ size, isTruncated = false, bold = false, underline = false, strikeThrough = false, className, ...props }, ref) => {
-    const { size: parentSize } = useStyleContext(SCOPE);
-    return (
-      <UIFab.Label
-        ref={ref}
-        {...props}
-        className={fabLabelStyle({
-          parentVariants: {
-            size: parentSize,
-          },
-          size,
-          isTruncated,
-          bold,
-          underline,
-          strikeThrough,
-          class: className,
-        })}
-      />
-    );
-  }
-);
+const FabLabel = React.forwardRef<React.ComponentRef<typeof UIFab.Label>, IFabLabelProps>(function FabLabel(
+  { size, isTruncated = false, bold = false, underline = false, strikeThrough = false, className, ...props },
+  ref
+) {
+  const { size: parentSize } = useStyleContext(SCOPE);
+  return (
+    <UIFab.Label
+      ref={ref}
+      {...props}
+      className={fabLabelStyle({
+        parentVariants: {
+          size: parentSize,
+        },
+        size,
+        isTruncated,
+        bold,
+        underline,
+        strikeThrough,
+        class: className,
+      })}
+    />
+  );
+});
 
-type IFabIconProps = React.ComponentPropsWithoutRef<typeof UIFab.Icon> & VariantProps<typeof fabIconStyle>;
+type IFabIconProps = React.ComponentPropsWithoutRef<typeof UIFab.Icon> &
+  VariantProps<typeof fabIconStyle> & {
+    height?: number;
+    width?: number;
+  };
 
-const FabIcon = React.forwardRef<React.ElementRef<typeof UIFab.Icon>, IFabIconProps>(({ size, className, ...props }, ref) => {
+const FabIcon = React.forwardRef<React.ComponentRef<typeof UIFab.Icon>, IFabIconProps>(function FabIcon({ size, className, ...props }, ref) {
   const { size: parentSize } = useStyleContext(SCOPE);
 
   if (typeof size === "number") {
