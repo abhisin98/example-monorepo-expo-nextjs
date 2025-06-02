@@ -7,7 +7,7 @@
     "build": "expo export --output-dir ./build --platform all",
     "lint": "expo lint",
     "type-check": "tsc --noEmit",
-    "test": "echo \"mobile: no test specified\"",
+    "test": "jest",
     "clean": "rm -rf .expo .turbo build",
     "start": "APP_VARIANT=development expo start --dev-client",
     "release": "eas build --profile development --platform android"

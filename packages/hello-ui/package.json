@@ -44,6 +44,7 @@
     "@gluestack-ui/nativewind-utils": "^1.0.26",
     "@monorepo/eslint-config": "workspace:*",
     "@monorepo/tsconfig": "workspace:*",
+    "@tailwindcss/container-queries": "^0.1.1",
     "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "8.57.0",
     "nativewind": "^4.1.23",

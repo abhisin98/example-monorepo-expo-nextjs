@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomePage /> test Text renders correctly on HomeScreen 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    style={
+      {
+        "fontSize": 48,
+        "fontWeight": "bold",
+        "marginVertical": 26.56,
+      }
+    }
+  >
+    Hello UI
+  </Text>
+  <Text>
+    This is the first page of your app.
+  </Text>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    className="group/button rounded flex-row items-center justify-center data-[focus-visible=true]:web:outline-none data-[focus-visible=true]:web:ring-2 data-[disabled=true]:opacity-40 gap-2 bg-primary-500 data-[hover=true]:bg-primary-600 data-[active=true]:bg-primary-700 border-primary-300 data-[hover=true]:border-primary-400 data-[active=true]:border-primary-500 data-[focus-visible=true]:web:ring-indicator-info px-5 h-10"
+    collapsable={false}
+    dataSet={
+      {
+        "active": "false",
+        "disabled": "false",
+        "focus": "false",
+        "focusVisible": "false",
+        "hover": "false",
+      }
+    }
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    states={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+  >
+    <Text
+      className="font-semibold web:select-none text-base text-typography-0 data-[hover=true]:text-typography-0 data-[active=true]:text-typography-0"
+      dataSet={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      states={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+    >
+      Hello World!
+    </Text>
+    <ActivityIndicator
+      aria-label="loading"
+      dataSet={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      states={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      tabIndex={0}
+    />
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight="100%"
+      bbWidth="100%"
+      focusable={false}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      role="img"
+      states={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      stroke="currentColor"
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      vbHeight={24}
+      vbWidth={24}
+    >
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "stroke",
+          ]
+        }
+        stroke={
+          {
+            "type": 2,
+          }
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGPath
+            d="M12 5V19"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            propList={
+              [
+                "strokeWidth",
+                "strokeLinecap",
+                "strokeLinejoin",
+              ]
+            }
+            strokeLinecap={1}
+            strokeLinejoin={1}
+            strokeWidth="2"
+          />
+          <RNSVGPath
+            d="M5 12H19"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            propList={
+              [
+                "strokeWidth",
+                "strokeLinecap",
+                "strokeLinejoin",
+              ]
+            }
+            strokeLinecap={1}
+            strokeLinejoin={1}
+            strokeWidth="2"
+          />
+        </RNSVGGroup>
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+</View>
+`;

@@ -9,18 +9,8 @@ const pkg = require("./package.json");
 
 const config: Config = {
   displayName: pkg.name,
-
-  setupFiles: ["react-native-css-interop/test/setup"],
-  setupFilesAfterEnv: ["react-native-css-interop/test/setupAfterEnv"],
-
-  transform: {
-    "^.+\\.jsx?$": "babel-jest",
-    "^.+\\.tsx?$": [
-      "ts-jest",
-      {
-        babelConfig: true,
-      },
-    ],
+  moduleNameMapper: {
+    "@monorepo/hello-ui(.*)$": "<rootDir>/../../packages/hello-ui/$1",
   },
 
   // All imported modules in your tests should be mocked automatically

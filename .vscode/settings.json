@@ -27,5 +27,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "gluestack-vscode.snippetstype": "nativewind",
-  "files.autoSave": "onFocusChange"
+  "files.autoSave": "onFocusChange",
+  "tailwindCSS.experimental.classRegex": [["styled\\([^,)]+,([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]]
 }
