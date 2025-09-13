@@ -1,7 +1,7 @@
 // Import your global CSS file
 import "../../global.css";
 
-import { GluestackUIProvider } from "@monorepo/hello-ui/components/gluestack-ui-provider";
+import { GluestackUIProvider } from "@monorepo/hello-ui/components/gluestack-ui-provider/index.next15";
 import type { Metadata } from "next";
 
 import StyledJsxRegistry from "../registry";

@@ -3,7 +3,7 @@ import { cleanup, fireEvent } from "@testing-library/react-native";
 import { Button, ButtonText, ButtonIcon, ButtonSpinner, ButtonGroup } from "../components/button";
 import { GluestackUIProvider } from "../components/gluestack-ui-provider";
 import { AddIcon } from "../components/icon";
-import { render } from "../test-util";
+import { render } from "../test-kit";
 
 afterAll(cleanup);
 

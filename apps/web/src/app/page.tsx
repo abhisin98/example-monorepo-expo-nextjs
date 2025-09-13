@@ -7,7 +7,7 @@ import { View, Text } from "react-native";
 // --------------------------------------------------------------------
 export default function HomePage() {
   return (
-    <main style={{ height: "100vh" }}>
+    <main style={{ height: "100vh", display: "flex" }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Heading size='2xl'>Hello UI</Heading>
         <Text>This is the first page of your app.</Text>

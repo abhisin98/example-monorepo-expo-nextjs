@@ -2,17 +2,7 @@
   "extends": "@monorepo/tsconfig/native.json",
   "compilerOptions": {
     "strict": true,
-    // "rootDir": "./components",
-    // "declaration": true,
-    // "outDir": "./build",
-    // "skipLibCheck": true,
-    // "noEmit": false,
-    // "declarationMap": false,
-    // "tsBuildInfoFile": "./build/.tsbuildinfo",
-    "jsxImportSource": "nativewind",
-    "paths": {
-      "tailwind.config": ["../../tailwind.config.js"]
-    }
+    "jsxImportSource": "nativewind"
   },
   "include": ["nativewind-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "build", "**/__tests__", "jest.config.ts"]

@@ -11,15 +11,15 @@
       "outputs": ["build/**", ".next/**", "!.next/cache/**", ".expo/**", "node_modules/.cache/metro/**"],
       "outputLogs": "new-only"
     },
-    "start": {
-      "cache": false,
-      "persistent": true
-    },
     "lint": {},
+    "type-check": {},
     "test": {},
     "clean": {
       "cache": false
     },
-    "type-check": {}
+    "start": {
+      "cache": false,
+      "persistent": true
+    }
   }
 }

@@ -1,5 +1,5 @@
 "use client";
-import { tva } from "@gluestack-ui/nativewind-utils/tva";
+import { tva } from "@gluestack-ui/utils/nativewind-utils";
 import React from "react";
 import { ImageBackground as RNImageBackground } from "react-native";
 

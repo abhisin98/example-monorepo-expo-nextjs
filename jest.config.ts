@@ -8,8 +8,14 @@ const swcConfig = {
 };
 
 const config: Config = {
-  // Run tests from one or more projects
   projects: ["<rootDir>/packages/*/jest.config.ts"],
+  transform: {
+    "^.+\\.(t|j)sx?$": ["@swc/jest", swcConfig],
+  },
+  verbose: true,
+
+  // Run tests from one or more projects
+  // projects: [],
 
   // The directory where Jest should output its coverage files
   // coverageDirectory: "<rootDir>/coverage/",
@@ -29,9 +35,7 @@ const config: Config = {
   // snapshotSerializers: ["enzyme-to-json/serializer"],
 
   // A map from regular expressions to paths to transformers
-  transform: {
-    "^.+\\.(t|j)sx?$": ["@swc/jest", swcConfig],
-  },
+  // transform: {},
 
   // An array of file extensions your modules use
   // moduleFileExtensions: ["js", "mjs", "cjs", "jsx", "ts", "tsx", "json", "node"],
@@ -46,7 +50,7 @@ const config: Config = {
   // transformIgnorePatterns: ["\\\\node_modules\\\\", "\\.pnp\\.[^\\\\]+$"],
 
   // Indicates whether each individual test should be reported during the run
-  verbose: true,
+  // verbose: true,
 
   // All imported modules in your tests should be mocked automatically
   // automock: false,

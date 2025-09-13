@@ -1,10 +1,9 @@
 "use client";
 import { H3 } from "@expo/html-elements";
-import { createAccordion } from "@gluestack-ui/accordion";
-import { PrimitiveIcon, UIIcon } from "@gluestack-ui/icon";
-import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-import { tva } from "@gluestack-ui/nativewind-utils/tva";
-import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
+import { createAccordion } from "@gluestack-ui/core/accordion/creator";
+import { PrimitiveIcon, UIIcon } from "@gluestack-ui/core/icon/creator";
+import { tva, withStyleContext, useStyleContext } from "@gluestack-ui/utils/nativewind-utils";
+import type { VariantProps } from "@gluestack-ui/utils/nativewind-utils";
 import { cssInterop } from "nativewind";
 import React from "react";
 import { View, Pressable, Text, Platform, TextProps } from "react-native";
@@ -194,7 +193,7 @@ const AccordionIcon = React.forwardRef<React.ComponentRef<typeof UIAccordion.Ico
       ref={ref}
       {...props}
       className={accordionIconStyle({
-        size,
+        size: size as any,
         class: className,
         parentVariants: { size: parentSize },
       })}

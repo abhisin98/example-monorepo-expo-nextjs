@@ -1,8 +1,0 @@
-{
-  "root": true,
-  "extends": "@monorepo/eslint-config/native",
-  "rules": {
-    "react-native/no-inline-styles": "off"
-  },
-  "ignorePatterns": ["node_modules", "build"]
-}

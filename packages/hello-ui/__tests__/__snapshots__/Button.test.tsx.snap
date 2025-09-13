@@ -1,0 +1,662 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button calls onPress when pressed 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  dataSet={
+    {
+      "active": "false",
+      "disabled": "false",
+      "focus": "false",
+      "focusVisible": "false",
+      "hover": "false",
+    }
+  }
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  role="button"
+  states={
+    {
+      "active": false,
+      "disabled": undefined,
+      "focus": false,
+      "focusVisible": false,
+      "hover": false,
+    }
+  }
+  style={
+    {
+      "backgroundColor": undefined,
+      "borderColor": undefined,
+    }
+  }
+>
+  <Text
+    dataSet={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    states={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    style={
+      {
+        "color": undefined,
+      }
+    }
+  >
+    Press
+  </Text>
+</View>
+`;
+
+exports[`Button renders Button with text 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    dataSet={
+      {
+        "active": "false",
+        "disabled": "false",
+        "focus": "false",
+        "focusVisible": "false",
+        "hover": "false",
+      }
+    }
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    states={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    style={
+      {
+        "backgroundColor": "rgba(51, 51, 51, 1)",
+        "borderColor": "rgba(102, 102, 102, 1)",
+      }
+    }
+  >
+    <Text
+      dataSet={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      states={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      style={
+        {
+          "color": "rgba(254, 254, 255, 1)",
+        }
+      }
+    >
+      Click me
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Button renders ButtonGroup with multiple buttons 1`] = `
+<View
+  flexDirection="row"
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    dataSet={
+      {
+        "active": "false",
+        "disabled": "false",
+        "focus": "false",
+        "focusVisible": "false",
+        "hover": "false",
+      }
+    }
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    states={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    style={
+      {
+        "backgroundColor": undefined,
+        "borderColor": undefined,
+      }
+    }
+  >
+    <Text
+      dataSet={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      states={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      style={
+        {
+          "color": undefined,
+        }
+      }
+    >
+      One
+    </Text>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    dataSet={
+      {
+        "active": "false",
+        "disabled": "false",
+        "focus": "false",
+        "focusVisible": "false",
+        "hover": "false",
+      }
+    }
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    states={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    style={
+      {
+        "backgroundColor": undefined,
+        "borderColor": undefined,
+      }
+    }
+  >
+    <Text
+      dataSet={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      states={
+        {
+          "active": false,
+          "disabled": undefined,
+          "focus": false,
+          "focusVisible": false,
+          "hover": false,
+        }
+      }
+      style={
+        {
+          "color": undefined,
+        }
+      }
+    >
+      Two
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Button renders ButtonIcon 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  dataSet={
+    {
+      "active": "false",
+      "disabled": "false",
+      "focus": "false",
+      "focusVisible": "false",
+      "hover": "false",
+    }
+  }
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  role="button"
+  states={
+    {
+      "active": false,
+      "disabled": undefined,
+      "focus": false,
+      "focusVisible": false,
+      "hover": false,
+    }
+  }
+  style={
+    {
+      "backgroundColor": undefined,
+      "borderColor": undefined,
+    }
+  }
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight="100%"
+    bbWidth="100%"
+    fill="none"
+    focusable={false}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    role="img"
+    states={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    stroke="currentColor"
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {},
+        {
+          "flex": 0,
+          "height": "100%",
+          "width": "100%",
+        },
+      ]
+    }
+    testID="icon"
+    vbHeight={24}
+    vbWidth={24}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+          "stroke",
+        ]
+      }
+      stroke={
+        {
+          "type": 2,
+        }
+      }
+    >
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGPath
+          d="M12 5V19"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+              "strokeLinecap",
+              "strokeLinejoin",
+            ]
+          }
+          stroke={
+            {
+              "type": 2,
+            }
+          }
+          strokeLinecap={1}
+          strokeLinejoin={1}
+          strokeWidth="2"
+        />
+        <RNSVGPath
+          d="M5 12H19"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+              "strokeLinecap",
+              "strokeLinejoin",
+            ]
+          }
+          stroke={
+            {
+              "type": 2,
+            }
+          }
+          strokeLinecap={1}
+          strokeLinejoin={1}
+          strokeWidth="2"
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+  <Text
+    dataSet={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    states={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    style={
+      {
+        "color": undefined,
+      }
+    }
+  >
+    Star
+  </Text>
+</View>
+`;
+
+exports[`Button renders ButtonSpinner when loading 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  dataSet={
+    {
+      "active": "false",
+      "disabled": "false",
+      "focus": "false",
+      "focusVisible": "false",
+      "hover": "false",
+    }
+  }
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  role="button"
+  states={
+    {
+      "active": false,
+      "disabled": undefined,
+      "focus": false,
+      "focusVisible": false,
+      "hover": false,
+    }
+  }
+  style={
+    {
+      "backgroundColor": undefined,
+      "borderColor": undefined,
+    }
+  }
+>
+  <ActivityIndicator
+    aria-label="loading"
+    dataSet={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    states={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    tabIndex={0}
+    testID="spinner"
+  />
+  <Text
+    dataSet={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    states={
+      {
+        "active": false,
+        "disabled": undefined,
+        "focus": false,
+        "focusVisible": false,
+        "hover": false,
+      }
+    }
+    style={
+      {
+        "color": undefined,
+      }
+    }
+  >
+    Loading
+  </Text>
+</View>
+`;

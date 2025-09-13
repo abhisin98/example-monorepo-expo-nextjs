@@ -125,6 +125,7 @@ exports[`<HomePage /> test Text renders correctly on HomeScreen 1`] = `
       align="xMidYMid"
       bbHeight="100%"
       bbWidth="100%"
+      fill="none"
       focusable={false}
       meetOrSlice={0}
       minX={0}
@@ -157,14 +158,10 @@ exports[`<HomePage /> test Text renders correctly on HomeScreen 1`] = `
       vbWidth={24}
     >
       <RNSVGGroup
-        fill={
-          {
-            "payload": 4278190080,
-            "type": 0,
-          }
-        }
+        fill={null}
         propList={
           [
+            "fill",
             "stroke",
           ]
         }
@@ -184,18 +181,20 @@ exports[`<HomePage /> test Text renders correctly on HomeScreen 1`] = `
         >
           <RNSVGPath
             d="M12 5V19"
-            fill={
-              {
-                "payload": 4278190080,
-                "type": 0,
-              }
-            }
+            fill={null}
             propList={
               [
+                "fill",
+                "stroke",
                 "strokeWidth",
                 "strokeLinecap",
                 "strokeLinejoin",
               ]
+            }
+            stroke={
+              {
+                "type": 2,
+              }
             }
             strokeLinecap={1}
             strokeLinejoin={1}
@@ -203,18 +202,20 @@ exports[`<HomePage /> test Text renders correctly on HomeScreen 1`] = `
           />
           <RNSVGPath
             d="M5 12H19"
-            fill={
-              {
-                "payload": 4278190080,
-                "type": 0,
-              }
-            }
+            fill={null}
             propList={
               [
+                "fill",
+                "stroke",
                 "strokeWidth",
                 "strokeLinecap",
                 "strokeLinejoin",
               ]
+            }
+            stroke={
+              {
+                "type": 2,
+              }
             }
             strokeLinecap={1}
             strokeLinejoin={1}

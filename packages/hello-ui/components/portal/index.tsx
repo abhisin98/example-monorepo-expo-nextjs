@@ -1,5 +1,5 @@
 "use client";
-import { Overlay } from "@gluestack-ui/overlay";
+import { Overlay } from "@gluestack-ui/core/overlay/creator";
 import { cssInterop } from "nativewind";
 import React from "react";
 

@@ -1,10 +1,9 @@
 "use client";
 
-import { PrimitiveIcon, UIIcon } from "@gluestack-ui/icon";
-import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-import { tva } from "@gluestack-ui/nativewind-utils/tva";
-import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
-import { createSelect } from "@gluestack-ui/select";
+import { PrimitiveIcon, UIIcon } from "@gluestack-ui/core/icon/creator";
+import { createSelect } from "@gluestack-ui/core/select/creator";
+import { tva, withStyleContext, useStyleContext } from "@gluestack-ui/utils/nativewind-utils";
+import type { VariantProps } from "@gluestack-ui/utils/nativewind-utils";
 import { cssInterop } from "nativewind";
 import React from "react";
 import { Pressable, View, TextInput } from "react-native";
@@ -67,7 +66,7 @@ const selectTriggerStyle = tva({
 });
 
 const selectInputStyle = tva({
-  base: "py-auto px-3 placeholder:text-typography-500 web:w-full h-full text-typography-900 pointer-events-none web:outline-none ios:leading-[0px]",
+  base: "px-3 placeholder:text-typography-500 web:w-full h-full text-typography-900 pointer-events-none web:outline-none ios:leading-[0px] py-0",
   parentVariants: {
     size: {
       xl: "text-xl",
@@ -192,7 +191,7 @@ const SelectIcon = React.forwardRef<React.ComponentRef<typeof UISelect.Icon>, IS
     <UISelect.Icon
       className={selectIconStyle({
         class: className,
-        size,
+        size: size as any,
         parentVariants: {
           size: parentSize,
         },

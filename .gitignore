@@ -52,7 +52,3 @@ yarn-error.log*
 
 # turbo
 .turbo
-
-
-# Local Netlify folder
-.netlify

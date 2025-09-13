@@ -2,7 +2,7 @@ import { screen, cleanup } from "@testing-library/react-native";
 
 import { Button, ButtonText } from "../components/button";
 import { GluestackUIProvider } from "../components/gluestack-ui-provider";
-import { render } from "../test-util";
+import { render } from "../test-kit";
 
 afterAll(cleanup);
 

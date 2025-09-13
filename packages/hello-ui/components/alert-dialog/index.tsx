@@ -1,8 +1,7 @@
 "use client";
-import { createAlertDialog } from "@gluestack-ui/alert-dialog";
-import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-import { tva } from "@gluestack-ui/nativewind-utils/tva";
-import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
+import { createAlertDialog } from "@gluestack-ui/core/alert-dialog/creator";
+import { tva, withStyleContext, useStyleContext } from "@gluestack-ui/utils/nativewind-utils";
+import type { VariantProps } from "@gluestack-ui/utils/nativewind-utils";
 import { Motion, AnimatePresence, createMotionAnimatedComponent, MotionComponentProps } from "@legendapp/motion";
 import { cssInterop } from "nativewind";
 import React from "react";
@@ -129,7 +128,7 @@ const AlertDialogContent = React.forwardRef<React.ComponentRef<typeof UIAccessib
         parentVariants: {
           size: parentSize,
         },
-        size,
+        size: size as any,
         class: className,
       })}
     />

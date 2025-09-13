@@ -1,8 +1,7 @@
 "use client";
-import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-import { tva } from "@gluestack-ui/nativewind-utils/tva";
-import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
-import { createPopover } from "@gluestack-ui/popover";
+import { createPopover } from "@gluestack-ui/core/popover/creator";
+import { tva, withStyleContext, useStyleContext } from "@gluestack-ui/utils/nativewind-utils";
+import type { VariantProps } from "@gluestack-ui/utils/nativewind-utils";
 import { Motion, createMotionAnimatedComponent, AnimatePresence, MotionComponentProps } from "@legendapp/motion";
 import { cssInterop } from "nativewind";
 import React from "react";
@@ -141,7 +140,7 @@ const PopoverContent = React.forwardRef<React.ComponentRef<typeof UIPopover.Cont
         parentVariants: {
           size: parentSize,
         },
-        size,
+        size: size as any,
         class: className,
       })}
       pointerEvents='auto'

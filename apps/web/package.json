@@ -12,29 +12,29 @@
     "start": "next start"
   },
   "dependencies": {
-    "@gluestack-ui/nativewind-utils": "^1.0.26",
+    "@gluestack-ui/utils": "^3.0.7",
     "@monorepo/hello-ui": "workspace:*",
-    "nativewind": "^4.1.23",
-    "next": "15.3.3",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-native-gesture-handler": "~2.24.0",
-    "react-native-reanimated": "3.17.5",
-    "react-native-svg": "15.11.2",
-    "react-native-web": "~0.20.0"
+    "nativewind": "^4.2.0",
+    "next": "15.5.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native-gesture-handler": "~2.28.0",
+    "react-native-reanimated": "4.1.0",
+    "react-native-safe-area-context": "^5.6.1",
+    "react-native-svg": "15.12.1",
+    "react-native-web": "~0.21.1"
   },
   "devDependencies": {
-    "@gluestack/ui-next-adapter": "^2.1.12",
+    "@gluestack/ui-next-adapter": "^3.0.2",
     "@monorepo/eslint-config": "workspace:*",
     "@monorepo/tsconfig": "workspace:*",
-    "@types/node": "22.15.29",
-    "@types/react-dom": "^19.1.5",
+    "@next/eslint-plugin-next": "15.5.3",
+    "@types/node": "24.3.3",
     "@types/react-native": "~0.73.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "8.57.0",
-    "eslint-config-next": "15.3.3",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
-    "typescript": "5.8.3"
+    "autoprefixer": "^10.4.21",
+    "eslint": "9.35.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "5.9.2"
   }
 }

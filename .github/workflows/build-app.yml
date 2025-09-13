@@ -1,5 +1,11 @@
 name: Build Android and iOS Apps
 
+env:
+  # Environment Variables:
+  # - Used to configure settings such as database connections and API keys.
+  # - It's best to store sensitive values in GitHub Secrets for security.
+  EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
 on:
   workflow_dispatch:
     inputs:
@@ -41,7 +47,7 @@ jobs:
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }} # Authentication for Expo
+          token: ${{ env.EXPO_TOKEN }} # Authentication for Expo
 
       - name: 👷 Configure EAS for production (Android)
         if: ${{ github.event.inputs.profile == 'production' }}

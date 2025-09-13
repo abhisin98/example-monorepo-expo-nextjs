@@ -1,9 +1,8 @@
 "use client";
-import { PrimitiveIcon, UIIcon } from "@gluestack-ui/icon";
-import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-import { tva } from "@gluestack-ui/nativewind-utils/tva";
-import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
-import { createRadio } from "@gluestack-ui/radio";
+import { PrimitiveIcon, UIIcon } from "@gluestack-ui/core/icon/creator";
+import { createRadio } from "@gluestack-ui/core/radio/creator";
+import { tva, withStyleContext, useStyleContext } from "@gluestack-ui/utils/nativewind-utils";
+import type { VariantProps } from "@gluestack-ui/utils/nativewind-utils";
 import { cssInterop } from "nativewind";
 import React from "react";
 import { Pressable, View, Platform, Text } from "react-native";
@@ -149,7 +148,7 @@ const RadioIcon = React.forwardRef<React.ComponentRef<typeof UIRadio.Icon>, IRad
         parentVariants: {
           size: parentSize,
         },
-        size,
+        size: size as any,
         class: className,
       })}
       ref={ref}

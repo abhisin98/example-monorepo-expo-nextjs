@@ -10,9 +10,9 @@
     "node.js"
   ],
   "dependencies": {
-    "eslint": "8.57.0",
+    "eslint": "9.35.0",
     "eslint-config-universe": "^15.0.3",
-    "prettier": "^3.5.3"
+    "prettier": "^3.6.2"
   },
   "peerDependencies": {
     "eslint": ">=8.10 <9",

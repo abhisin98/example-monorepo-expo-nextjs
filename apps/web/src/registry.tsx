@@ -1,8 +1,8 @@
 "use client";
-import { flush } from "@gluestack-ui/nativewind-utils/flush";
+import { flush } from "@gluestack-ui/utils/nativewind-utils";
 import { useServerInsertedHTML } from "next/navigation";
 import React, { useRef, useState } from "react";
-// @ts-ignore
+// @ts-expect-error : AppRegistry is defined in react-native-web but its type is not defined
 import { AppRegistry } from "react-native-web";
 import { StyleRegistry, createStyleRegistry } from "styled-jsx";
 

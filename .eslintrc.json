@@ -1,5 +1,0 @@
-{
-  "extends": ["@monorepo/eslint-config/default"],
-  "settings": {},
-  "ignorePatterns": ["node_modules", "build", ".turbo", ".next", ".expo", "*.css", "*.json"]
-}

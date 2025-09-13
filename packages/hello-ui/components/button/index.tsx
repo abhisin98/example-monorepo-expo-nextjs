@@ -1,12 +1,11 @@
 "use client";
-import { createButton } from "@gluestack-ui/button";
-import { PrimitiveIcon, UIIcon } from "@gluestack-ui/icon";
-import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-import { tva } from "@gluestack-ui/nativewind-utils/tva";
-import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
+import { createButton } from "@gluestack-ui/core/button/creator";
+import { PrimitiveIcon, UIIcon } from "@gluestack-ui/core/icon/creator";
+import { tva, withStyleContext, useStyleContext } from "@gluestack-ui/utils/nativewind-utils";
 import { cssInterop } from "nativewind";
 import React from "react";
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
+import type { VariantProps } from "tailwind-variants";
 
 const SCOPE = "BUTTON";
 
@@ -245,13 +244,13 @@ const buttonGroupStyle = tva({
 
 type IButtonProps = Omit<React.ComponentPropsWithoutRef<typeof UIButton>, "context"> & VariantProps<typeof buttonStyle> & { className?: string };
 
-const Button = React.forwardRef<React.ComponentRef<typeof UIButton>, IButtonProps>(function Button({ className, variant = "solid", size = "md", action = "primary", ...props }, ref) {
+const Button = React.forwardRef<React.ElementRef<typeof UIButton>, IButtonProps>(({ className, variant = "solid", size = "md", action = "primary", ...props }, ref) => {
   return <UIButton ref={ref} {...props} className={buttonStyle({ variant, size, action, class: className })} context={{ variant, size, action }} />;
 });
 
 type IButtonTextProps = React.ComponentPropsWithoutRef<typeof UIButton.Text> & VariantProps<typeof buttonTextStyle> & { className?: string };
 
-const ButtonText = React.forwardRef<React.ComponentRef<typeof UIButton.Text>, IButtonTextProps>(function ButtonText({ className, variant, size, action, ...props }, ref) {
+const ButtonText = React.forwardRef<React.ElementRef<typeof UIButton.Text>, IButtonTextProps>(({ className, variant, size, action, ...props }, ref) => {
   const { variant: parentVariant, size: parentSize, action: parentAction } = useStyleContext(SCOPE);
 
   return (
@@ -264,9 +263,9 @@ const ButtonText = React.forwardRef<React.ComponentRef<typeof UIButton.Text>, IB
           size: parentSize,
           action: parentAction,
         },
-        variant,
-        size,
-        action,
+        variant: variant as "link" | "outline" | "solid" | undefined,
+        size: size as any,
+        action: action as "primary" | "secondary" | "positive" | "negative" | undefined,
         class: className,
       })}
     />
@@ -283,7 +282,7 @@ type IButtonIcon = React.ComponentPropsWithoutRef<typeof UIButton.Icon> &
     width?: number;
   };
 
-const ButtonIcon = React.forwardRef<React.ComponentRef<typeof UIButton.Icon>, IButtonIcon>(function ButtonIcon({ className, size, ...props }, ref) {
+const ButtonIcon = React.forwardRef<React.ElementRef<typeof UIButton.Icon>, IButtonIcon>(({ className, size, ...props }, ref) => {
   const { variant: parentVariant, size: parentSize, action: parentAction } = useStyleContext(SCOPE);
 
   if (typeof size === "number") {
@@ -300,7 +299,7 @@ const ButtonIcon = React.forwardRef<React.ComponentRef<typeof UIButton.Icon>, IB
           variant: parentVariant,
           action: parentAction,
         },
-        size,
+        size: size as any,
         class: className,
       })}
       ref={ref}
@@ -310,17 +309,14 @@ const ButtonIcon = React.forwardRef<React.ComponentRef<typeof UIButton.Icon>, IB
 
 type IButtonGroupProps = React.ComponentPropsWithoutRef<typeof UIButton.Group> & VariantProps<typeof buttonGroupStyle>;
 
-const ButtonGroup = React.forwardRef<React.ComponentRef<typeof UIButton.Group>, IButtonGroupProps>(function ButtonGroup(
-  { className, space = "md", isAttached = false, flexDirection = "column", ...props },
-  ref
-) {
+const ButtonGroup = React.forwardRef<React.ElementRef<typeof UIButton.Group>, IButtonGroupProps>(({ className, space = "md", isAttached = false, flexDirection = "column", ...props }, ref) => {
   return (
     <UIButton.Group
       className={buttonGroupStyle({
         class: className,
-        space,
-        isAttached,
-        flexDirection,
+        space: space as any,
+        isAttached: isAttached as boolean,
+        flexDirection: flexDirection as any,
       })}
       {...props}
       ref={ref}

@@ -1,5 +1,15 @@
 name: Build Android and iOS Apps and Submit to Store
 
+env:
+  # Environment Variables:
+  # - Used to configure settings such as database connections and API keys.
+  # - It's best to store sensitive values in GitHub Secrets for security.
+  EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  EAS_SUBMIT_ANDROID_SERVICE_ACCOUNT_JSON: ${{ secrets.EAS_SUBMIT_ANDROID_SERVICE_ACCOUNT_JSON }} # Authentication for Google Play
+  EAS_SUBMIT_IOS_APP_SPECIFIC_PASSWORD: ${{ secrets.EAS_SUBMIT_IOS_APP_SPECIFIC_PASSWORD }} # Authentication for App Store Connect
+  EAS_SUBMIT_IOS_APP_STORE_CONNECT_API_KEY: ${{ secrets.EAS_SUBMIT_IOS_APP_STORE_CONNECT_API_KEY }} # Authentication for App Store Connect
+
 on:
   workflow_dispatch:
     inputs:
@@ -31,15 +41,11 @@ jobs:
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }} # Authentication for Expo
+          token: ${{ env.EXPO_TOKEN }} # Authentication for Expo
 
       - name: Build Android and iOS Apps and Submit to Store 🚀
         working-directory: apps/mobile
         run: eas build --non-interactive --wait --auto-submit --profile production --platform=${{ github.event.inputs.platform }}  | tee deploy.log
-        # env:
-        #   EAS_SUBMIT_ANDROID_SERVICE_ACCOUNT_JSON: ${{ secrets.EAS_SUBMIT_ANDROID_SERVICE_ACCOUNT_JSON }} # Authentication for Google Play
-        #   EAS_SUBMIT_IOS_APP_SPECIFIC_PASSWORD: ${{ secrets.EAS_SUBMIT_IOS_APP_SPECIFIC_PASSWORD }} # Authentication for App Store Connect
-        #   EAS_SUBMIT_IOS_APP_STORE_CONNECT_API_KEY: ${{ secrets.EAS_SUBMIT_IOS_APP_STORE_CONNECT_API_KEY }} # Authentication for App Store Connect
 
       - name: Extract Deployment URLs
         working-directory: apps/mobile

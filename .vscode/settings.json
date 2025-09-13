@@ -5,7 +5,12 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
-  "prettier.configPath": "",
+
+  "files.autoSave": "onFocusChange",
+
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "npm.enableRunFromFolder": true,
+  "npm.scriptExplorerAction": "run",
 
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "graphql"],
   "eslint.options": {
@@ -20,13 +25,6 @@
     { "directory": "./apps/**/*", "changeProcessCWD": true }
   ],
 
-  "npm.enableRunFromFolder": true,
-  "npm.scriptExplorerAction": "run",
-  "typescript.tsdk": "node_modules\\typescript\\lib",
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "gluestack-vscode.snippetstype": "nativewind",
-  "files.autoSave": "onFocusChange",
-  "tailwindCSS.experimental.classRegex": [["styled\\([^,)]+,([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]]
+  "tailwindCSS.experimental.classRegex": [["tva\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]],
 }

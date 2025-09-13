@@ -1,11 +1,10 @@
 "use client";
-import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-import { tva } from "@gluestack-ui/nativewind-utils/tva";
-import { withStyleContext, useStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
-import { createSlider } from "@gluestack-ui/slider";
+import { createSlider } from "@gluestack-ui/core/slider/creator";
+import { tva, withStyleContext, useStyleContext } from "@gluestack-ui/utils/nativewind-utils";
+import type { VariantProps } from "@gluestack-ui/utils/nativewind-utils";
 import { cssInterop } from "nativewind";
 import React from "react";
-import { Pressable, View } from "react-native";
+import { View, Pressable } from "react-native";
 
 const SCOPE = "SLIDER";
 const Root = withStyleContext(View, SCOPE);
@@ -179,7 +178,7 @@ const SliderThumb = React.forwardRef<React.ComponentRef<typeof UISlider.Thumb>, 
         parentVariants: {
           size: parentSize,
         },
-        size,
+        size: size as any,
         class: className,
       })}
     />

@@ -1,6 +1,6 @@
 import { Dimensions } from "react-native";
 
-import { renderCurrentTest } from "../test-util";
+import { renderCurrentTest } from "../test-kit";
 
 describe("Tailwind CSS Sizing - Width", () => {
   test("w-0", async () => {

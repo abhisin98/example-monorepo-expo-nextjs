@@ -1,8 +1,7 @@
 "use client";
-import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-import { tva } from "@gluestack-ui/nativewind-utils/tva";
-import { withStyleContext } from "@gluestack-ui/nativewind-utils/withStyleContext";
-import { createTooltip } from "@gluestack-ui/tooltip";
+import { createTooltip } from "@gluestack-ui/core/tooltip/creator";
+import type { VariantProps } from "@gluestack-ui/utils/nativewind-utils";
+import { tva, withStyleContext } from "@gluestack-ui/utils/nativewind-utils";
 import { Motion, AnimatePresence, MotionComponentProps } from "@legendapp/motion";
 import { cssInterop } from "nativewind";
 import React from "react";
@@ -34,9 +33,7 @@ const tooltipTextStyle = tva({
 
   variants: {
     isTruncated: {
-      true: {
-        props: "line-clamp-1 truncate",
-      },
+      true: "line-clamp-1 truncate",
     },
     bold: {
       true: "font-bold",
