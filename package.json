@@ -59,6 +59,10 @@
         "typescript"
       ]
     },
-    "overrides": {}
+    "overrides": {},
+    "ignoredBuiltDependencies": [
+      "@swc/core",
+      "sharp"
+    ]
   }
 }

@@ -52,3 +52,10 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*

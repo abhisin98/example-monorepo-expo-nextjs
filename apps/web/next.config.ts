@@ -8,7 +8,11 @@ const nextConfig: NextConfig = {
   // typescript: {
   //   ignoreBuildErrors: true,
   // },
-  transpilePackages: [],
+  transpilePackages: ["nativewind", "react-native-css-interop"],
 };
 
 export default withGluestackUI(nextConfig);
+
+// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+initOpenNextCloudflareForDev();

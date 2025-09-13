@@ -9,11 +9,15 @@
     "type-check": "tsc --noEmit",
     "test": "echo \"web: no test specified\"",
     "clean": "rm -rf .next .turbo",
-    "start": "next start"
+    "start": "next start",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@gluestack-ui/utils": "^3.0.7",
     "@monorepo/hello-ui": "workspace:*",
+    "@opennextjs/cloudflare": "^1.8.2",
     "nativewind": "^4.2.0",
     "next": "15.5.3",
     "react": "19.1.0",
@@ -35,6 +39,7 @@
     "eslint": "9.35.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "wrangler": "^4.36.0"
   }
 }
