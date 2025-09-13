@@ -12,7 +12,7 @@
       }
     ],
     "jsxImportSource": "nativewind",
-    "types": ["./env.d.ts", "node"]
+    "types": ["./worker-configuration.d.ts", "node"]
   },
   "include": ["nativewind-env.d.ts", "next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

@@ -10,9 +10,8 @@
     "test": "echo \"web: no test specified\"",
     "clean": "rm -rf .next .turbo",
     "start": "next start",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
   },
   "dependencies": {
     "@gluestack-ui/utils": "^3.0.7",
